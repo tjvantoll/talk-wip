@@ -1188,6 +1188,22 @@
 				</section>
 
 				<section>
+					<p>Range pseudo-elements</p>
+<pre class="language-markup" style="font-size: 0.7em;">
+<code contenteditable>&lt;input type="range" id="pseudo-range"&gt;
+&lt;style&gt;
+    #pseudo-range::-webkit-slider-runnable-track {
+        background: blue;
+    }
+    #pseudo-range::-webkit-slider-thumb {
+        outline: 5px solid green;
+    }
+&lt;/style&gt;
+</code></pre>
+					<div class="output"></div>
+				</section>
+
+				<section>
 					<h2>Pseudo-Elements</h2>
 					<img src="img/gecko-input-range.png">
 					<img src="img/trident-input-range.png">
