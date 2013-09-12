@@ -16,8 +16,6 @@
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/default.css" id="theme">
 		<link rel="stylesheet" href="css/jquery-ui/jquery-ui-1.10.2.min.css">
-		<link rel="stylesheet" href="css/kendo-ui/kendo.common.min.css">
-		<link rel="stylesheet" href="css/kendo-ui/kendo.default.min.css">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="css/prism.css">
@@ -162,8 +160,15 @@
 					<h2>Outline</h2>
 					<ul class="spaced">
 						<li>The past</li>
-						<li>Compare widgets</li>
-						<li>What can you use now</li>
+						<li>
+							Compare widgets
+							<ul>
+								<li>input[type="date"] vs. datepicker</li>
+								<li>input[type="number"] vs. spinner</li>
+								<li>input[type="range"] vs. slider</li>
+							</ul>
+						</li>
+						<li>What should you do today</li>
 						<li>The future</li>
 					</ul>
 				</section>
@@ -235,6 +240,23 @@
 							<li>Themes will emerge</li>
 						</ul>
 					</aside>
+				</section>
+
+				<section>
+					<h2>Outline</h2>
+					<ul class="spaced">
+						<li><span class="strike">The past</span></li>
+						<li>
+							Compare widgets
+							<ul>
+								<li>input[type="date"] vs. datepicker</li>
+								<li>input[type="number"] vs. spinner</li>
+								<li>input[type="range"] vs. slider</li>
+							</ul>
+						</li>
+						<li>What should you do today</li>
+						<li>The future</li>
+					</ul>
 				</section>
 
 				<section>
@@ -673,6 +695,23 @@
 				</section>
 
 				<section>
+					<h2>Outline</h2>
+					<ul class="spaced">
+						<li><span class="strike">The past</span></li>
+						<li>
+							Compare widgets
+							<ul>
+								<li><span class="strike">input[type="date"] vs. datepicker</span></li>
+								<li>input[type="number"] vs. spinner</li>
+								<li>input[type="range"] vs. slider</li>
+							</ul>
+						</li>
+						<li>What should you do today</li>
+						<li>The future</li>
+					</ul>
+				</section>
+
+				<section>
 					<h2>Number Pickers</h2>
 <pre class="language-markup" style="font-size: 0.7em;">
 <code contenteditable>&lt;input type="number"&gt;
@@ -1007,6 +1046,23 @@
 				</section>
 
 				<section>
+					<h2>Outline</h2>
+					<ul class="spaced">
+						<li><span class="strike">The past</span></li>
+						<li>
+							Compare widgets
+							<ul>
+								<li><span class="strike">input[type="date"] vs. datepicker</span></li>
+								<li><span class="strike">input[type="number"] vs. spinner</span></li>
+								<li>input[type="range"] vs. slider</li>
+							</ul>
+						</li>
+						<li>What should you do today</li>
+						<li>The future</li>
+					</ul>
+				</section>
+
+				<section>
 					<h2>Range Pickers</h2>
 <pre class="language-markup" style="font-size: 0.7em;">
 <code>&lt;input type="range"&gt;
@@ -1266,6 +1322,23 @@
 				</section>
 
 				<section>
+					<h2>Outline</h2>
+					<ul class="spaced">
+						<li><span class="strike">The past</span></li>
+						<li>
+							<span class="strike">Compare widgets</span>
+							<ul>
+								<li><span class="strike">input[type="date"] vs. datepicker</span></li>
+								<li><span class="strike">input[type="number"] vs. spinner</span></li>
+								<li><span class="strike">input[type="range"] vs. slider</span></li>
+							</ul>
+						</li>
+						<li>What should you do today</li>
+						<li>The future</li>
+					</ul>
+				</section>
+
+				<section>
 					<h2>To Summarize...</h2>
 					<aside class="notes">
 						<ul>
@@ -1293,8 +1366,75 @@
 				</section>
 
 				<section>
-					<h2>UI Widgets vs. Native Elements</h2>
+					<h2>JS Widgets vs. Native Elements</h2>
 					<p>You have to pick one or the other.</p>
+				</section>
+
+				<section>
+					<h2>What to pick?</h2>
+					<ul class="spaced">
+						<li>
+							Native Element
+							<ul>
+								<li>Simple</li>
+								<li>High % mobile users</li>
+							</ul>
+						</li>
+						<li>
+							JS Widgets
+							<ul>
+								<li>Non-trivial requirements</li>
+								<li>Comprehensive browser support</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Fallback - Option 1</h2>
+<pre class="language-markup" style="font-size: 0.7em;">
+<code contenteditable>&lt;input type="date" id="date"&gt;
+&lt;script&gt;
+    if ( !Modernizr.inputtypes.date ) {
+        $( "#date" ).datepicker({
+            dateFormat: "yy-mm-dd"
+        });
+    }
+&lt;/script&gt;
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Fallack - Option 2</h2>
+<pre class="language-markup" style="font-size: 0.7em;">
+<code contenteditable>&lt;input type="date" id="date"&gt;
+&lt;script&gt;
+    if ( !Modernizr.inputtypes.date ) {
+        $( "#date" ).after( "&lt;p&gt;In yy-mm-dd format&lt;/p&gt;" );
+    }
+&lt;/script&gt;
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Other Libraries</h2>
+				</section>
+
+				<section>
+					<h2>Outline</h2>
+					<ul class="spaced">
+						<li><span class="strike">The past</span></li>
+						<li>
+							<span class="strike">Compare widgets</span>
+							<ul>
+								<li><span class="strike">input[type="date"] vs. datepicker</span></li>
+								<li><span class="strike">input[type="number"] vs. spinner</span></li>
+								<li><span class="strike">input[type="range"] vs. slider</span></li>
+							</ul>
+						</li>
+						<li><span class="strike">What should you do today</span></li>
+						<li>The future</li>
+					</ul>
 				</section>
 
 				<section>
@@ -1420,7 +1560,6 @@ document.querySelectorAll( "input" )
 		<script src="js/cultures/globalize.culture.de.js"></script>
 		<script src="js/cultures/globalize.culture.ja.js"></script>
 		<script src="js/jquery.mousewheel.js"></script>
-		<script src="js/kendo.web.min.js"></script>
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
 		<script src="js/prism.js"></script>
@@ -1496,9 +1635,10 @@ document.querySelectorAll( "input" )
 
 			var updateOutput = function() {
 				var $output = $(this).parents('section').find('.output');
+
 				try {
 					$output.html($(this).text());
-				} catch(e) {}
+				} catch(e) { }
 			};
 
 			$('code')
