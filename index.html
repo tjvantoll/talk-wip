@@ -1418,6 +1418,11 @@
 
 				<section>
 					<h2>Other Libraries</h2>
+					<ul>
+						<li>
+							<a target="_blank" href="demos/kendo-ui/">Kendo UI</a>
+						</li>
+					</ul>
 				</section>
 
 				<section>
@@ -1563,6 +1568,7 @@ document.querySelectorAll( "input" )
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
 		<script src="js/prism.js"></script>
+		<script src="js/code-updater.js"></script>
 
 		<script>
 			$.widget( "ui.timespinner", $.ui.spinner, {
@@ -1632,26 +1638,6 @@ document.querySelectorAll( "input" )
 						.appendTo('head');
 				}
 			});
-
-			var updateOutput = function() {
-				var $output = $(this).parents('section').find('.output');
-
-				try {
-					$output.html($(this).text());
-				} catch(e) { }
-			};
-
-			$('code')
-				.each(function() {
-					updateOutput.apply(this);
-				})
-				.on('keydown', function() {
-					var self = this;
-					setTimeout(function() {
-						updateOutput.apply(self);
-					}, 50);
-				})
-				.on('blur', Prism.highlightAll);
 
 			$(document)
 				.on('submit', 'form', function(event) {
