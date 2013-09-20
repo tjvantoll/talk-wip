@@ -3,7 +3,7 @@ var updateOutput = function() {
 
 	try {
 		$output.html($(this).text());
-	} catch(e) { }
+	} catch(e) {}
 };
 
 $('code')

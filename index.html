@@ -192,7 +192,8 @@
 &lt;input type="radio"&gt;  &lt;input type="checkbox"&gt;
 &lt;input type="file"&gt;   &lt;input type="hidden"&gt;
 &lt;input type="button"&gt; &lt;input type="image"&gt;
-&lt;input type="reset"&gt;  &lt;input type="submit"&gt; 
+&lt;input type="reset"&gt;  &lt;input type="submit"&gt;
+&lt;button&gt;&lt;/button&gt;
 &lt;select&gt;&lt;option&gt;option&lt;/option&gt;&lt;/select&gt;
 &lt;textarea&gt;&lt;/textarea&gt;
 </code></pre>
@@ -1607,8 +1608,6 @@ document.querySelectorAll( "input" )
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
 		<script src="js/prism.js"></script>
-		<script src="js/code-updater.js"></script>
-
 		<script>
 			$.widget( "ui.timespinner", $.ui.spinner, {
 				options: {
@@ -1633,7 +1632,9 @@ document.querySelectorAll( "input" )
 					return Globalize.format( new Date(value), "t" );
 				}
 			});
-
+		</script>
+		<script src="js/code-updater.js"></script>
+		<script>
 			// Full list of configuration options available here:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
