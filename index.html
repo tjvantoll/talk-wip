@@ -242,6 +242,19 @@
 				</section>
 
 				<section>
+					<h2>Provide a title attribute for context</h2>
+<pre class="language-markup">
+<code contenteditable>&lt;form&gt;
+  &lt;input type="text"
+    title="In x.xx format"
+    pattern="[0-9].[0-9][0-9]"&gt;
+  &lt;button&gt;Go&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+					<div class="output"></div>
+				</section>
+
+				<section>
 					<h2 class="no_casing"><a href="http://html5pattern.com/">http://html5pattern.com</a></h2>
 					<img src="/img/html-patterns.png">
 				</section>
@@ -252,19 +265,6 @@
 <code contenteditable>&lt;form&gt;
   &lt;input type="text" placeholder="yyyy-mm-dd"
     pattern="(?:19|20)(?:(?:[13579][26]|[02468][048])-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))|(?:[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:29|30))|(?:(?:0[13578]|1[02])-31)))"&gt;
-  &lt;button&gt;Go&lt;/button&gt;
-&lt;/form&gt;
-</code></pre>
-					<div class="output"></div>
-				</section>
-
-				<section>
-					<h2>Provide a title attribute for context</h2>
-<pre class="language-markup">
-<code contenteditable>&lt;form&gt;
-  &lt;input type="text"
-    title="In x.xx format"
-    pattern="[0-9].[0-9][0-9]"&gt;
   &lt;button&gt;Go&lt;/button&gt;
 &lt;/form&gt;
 </code></pre>
@@ -578,10 +578,6 @@
 				</section>
 
 				<section>
-					<h2>CSS Hooks</h2>
-				</section>
-
-				<section>
 					<h2 class="no_casing">:required & :optional</h2>
 <pre class="language-markup" style="font-size: 0.7em;">
 <code contenteditable>&lt;form id="form-1"&gt;
@@ -650,7 +646,12 @@
 
 				<section>
 					<h2>Styling the Bubbles</h2>
-					<p>WebKit is the only rendering engine that gives you hooks.</p>
+					<p class="fragment">You can't.</p>
+				</section>
+
+				<section>
+					<h2>Old WebKit Hooks</h2>
+					<p>WebKit used to have these pseudo-elements.</p>
 					<ul>
 						<li>::-webkit-validation-bubble</li>
 						<li>::-webkit-validation-bubble-arrow</li>
@@ -662,34 +663,14 @@
 				</section>
 
 				<section>
+					<h2>You used to be able to do this</h2>
+					<img src="/img/webkit-validation-bubble.png">
+					<img src="/img/webkit-validation-bubble-pretty.png">
+				</section>
+
+				<section>
 					<h2>Styling the Bubbles</h2>
-<pre class="language-markup constrained" style="font-size: 0.7em;">
-<code contenteditable>&lt;form id="form-4"&gt;
-  &lt;input type="text" required&gt;
-  &lt;button type="submit"&gt;Go&lt;/button&gt;
-&lt;/form&gt;
-&lt;style&gt;
-  #form-4 ::-webkit-validation-bubble {
-    padding: 1em; background: orange;
-  }
-  #form-4 ::-webkit-validation-bubble-arrow {
-    background: blue;
-  }
-  #form-4 ::-webkit-validation-bubble-arrow-clipper {
-    border: 2px solid black;
-  }
-  #form-4 ::-webkit-validation-bubble-heading {
-    background: green;
-  }
-  #form-4 ::-webkit-validation-bubble-message {
-    color: white; background: purple; font-family: 'Comic Sans MS';
-  }
-  #form-4 ::-webkit-validation-bubble-text-block {
-    border: 1px solid red; padding: 1em;
-  }
-&lt;/style&gt;</code>
-</pre>
-					<div class="output"></div>
+					<p>Chrome 28 removed the pseudo-elements for styling form validation messages.</p>
 				</section>
 
 				<section>
