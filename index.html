@@ -105,7 +105,7 @@
 <pre class="language-markup">
 <code contenteditable>&lt;form&gt;
     &lt;input type="text"&gt;
-    &lt;button type="submit"&gt;Go&lt;/button&gt;
+    &lt;button&gt;Go&lt;/button&gt;
 &lt;/form&gt;
 </code></pre>
 					<div class="output"></div>
@@ -140,7 +140,7 @@
 <pre class="language-markup">
 <code contenteditable>&lt;form&gt;
     &lt;input type="text" required&gt;
-    &lt;button type="submit"&gt;Go&lt;/button&gt;
+    &lt;button&gt;Go&lt;/button&gt;
 &lt;/form&gt;
 </code></pre>
 					<div class="output"></div>
@@ -153,10 +153,6 @@
 				</section>
 
 				<section>
-					<img class="full_width" src="img/browser_screenshots.png" alt="Display of required fields in supporting browsers">
-				</section>
-
-				<section>
 					<img class="full_slide" src="img/caniuse.png" alt="Current browser support of constraint validation">
 					<a href="http://caniuse.com/#feat=form-validation">http://caniuse.com/#feat=form-validation</a>
 					<aside class="notes">
@@ -165,7 +161,22 @@
 				</section>
 
 				<section>
-					<h2>Works with these attributes</h2>
+					<h2>Bubbles!</h2>
+					<img src="img/browser_screenshots.png" alt="Display of required fields in supporting browsers">
+				</section>
+
+				<section>
+					<h2>Agenda</h2>
+					<ul class="spaced">
+						<li>HTML attributes</li>
+						<li>DOM API</li>
+						<li>CSS hooks</li>
+						<li>How to use constraint validation today</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Form element attributes</h2>
 					<ul>
 						<li>min</li>
 						<li>max</li>
@@ -178,12 +189,41 @@
 				</section>
 
 				<section>
-					<h2>min, max, step</h2>
+					<h2>min, max</h2>
 <pre class="language-markup">
 <code contenteditable>&lt;form&gt;
   &lt;input type="number" required
-    min="2" max="10" step="2"&gt;
-  &lt;button type="submit"&gt;Go&lt;/button&gt;
+    min="2" max="10"&gt;
+  &lt;button&gt;Go&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+					<div class="output"></div>
+				</section>
+
+				<section>
+					<h2>maxlength</h2>
+<pre class="language-markup">
+<code contenteditable>&lt;form&gt;
+  &lt;input type="text" maxlength="2"
+    value="123"&gt;
+  &lt;button&gt;Go&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+					<div class="output"></div>
+				</section>
+
+				<section>
+					<h2>The <a href="http://www.whatwg.org/specs/web-apps/current-work/#concept-input-value-dirty-flag">spec</a></h2>
+					<blockquote>Constraint validation: If an element has a maximum allowed value length, its dirty value flag is true, <b style="font-size: 1.1em;">its value was last changed by a user edit</b> (as opposed to a change made by a script), and the code-unit length of the element’s value is greater than the element’s maximum allowed value length, then the element is suffering from being too long.</blockquote>
+				</section>
+
+				<section>
+					<h2>maxlength</h2>
+<pre class="language-markup">
+<code contenteditable>&lt;form&gt;
+  &lt;input type="text" maxlength="2"
+    value="1234"&gt;
+  &lt;button&gt;Go&lt;/button&gt;
 &lt;/form&gt;
 </code></pre>
 					<div class="output"></div>
@@ -195,7 +235,24 @@
 <code contenteditable>&lt;form&gt;
   &lt;input type="text"
     pattern="[0-9].[0-9][0-9]"&gt;
-  &lt;button type="submit"&gt;Go&lt;/button&gt;
+  &lt;button&gt;Go&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+					<div class="output"></div>
+				</section>
+
+				<section>
+					<h2 class="no_casing"><a href="http://html5pattern.com/">http://html5pattern.com</a></h2>
+					<img src="/img/html-patterns.png">
+				</section>
+
+				<section>
+					<h2>pattern</h2>
+<pre class="language-markup constrained">
+<code contenteditable>&lt;form&gt;
+  &lt;input type="text" placeholder="yyyy-mm-dd"
+    pattern="(?:19|20)(?:(?:[13579][26]|[02468][048])-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))|(?:[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:29|30))|(?:(?:0[13578]|1[02])-31)))"&gt;
+  &lt;button&gt;Go&lt;/button&gt;
 &lt;/form&gt;
 </code></pre>
 					<div class="output"></div>
@@ -208,7 +265,18 @@
   &lt;input type="text"
     title="In x.xx format"
     pattern="[0-9].[0-9][0-9]"&gt;
-  &lt;button type="submit"&gt;Go&lt;/button&gt;
+  &lt;button&gt;Go&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+					<div class="output"></div>
+				</section>
+
+				<section>
+					<h2 class="no_casing">step</h2>
+<pre class="language-markup">
+<code contenteditable>&lt;form&gt;
+  &lt;input type="number" step="2"&gt;
+  &lt;button&gt;Go&lt;/button&gt;
 &lt;/form&gt;
 </code></pre>
 					<div class="output"></div>
@@ -220,14 +288,61 @@
 <code contenteditable>&lt;form&gt;
   &lt;input type="email" required&gt;
   &lt;input type="url" required&gt;
-  &lt;button type="submit"&gt;Go&lt;/button&gt;
+  &lt;button&gt;Go&lt;/button&gt;
 &lt;/form&gt;
 </code></pre>
 					<div class="output"></div>
 				</section>
 
 				<section>
-					<h2>Customization?</h2>
+					<h2 class="no_casing">type="date"</h2>
+<pre class="language-markup">
+<code contenteditable>&lt;form&gt;
+  &lt;input type="date"&gt;
+  &lt;button&gt;Go&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+					<div class="output"></div>
+				</section>
+
+				<section>
+					<h2>Preventing submission</h2>
+				</section>
+
+				<section>
+					<h2 class="no_casing">novalidate attribute</h2>
+					<p>Boolean attribute that can be applied to &lt;form&gt; elements to prevent validation.</p>
+<pre class="language-markup" style="font-size: 0.8em;">
+<code contenteditable>&lt;form novalidate&gt;
+  &lt;input type="text" required&gt;
+  &lt;button&gt;Go&lt;/button&gt;
+&lt;/form&gt;</code>
+</pre>
+					<div class="output"></div>
+				</section>
+
+				<section>
+					<h2 class="no_casing">formnovalidate attribute</h2>
+					<p>Boolean attribute that can be applied to submit buttons to prevent validation.</p>
+<pre class="language-markup" style="font-size: 0.8em;">
+<code contenteditable>&lt;form&gt;
+  &lt;input type="text" required&gt;
+  &lt;button&gt;Validate&lt;/button&gt;
+  &lt;button formnovalidate&gt;
+    Do NOT Validate&lt;/button&gt;
+&lt;/form&gt;</code>
+</pre>
+					<div class="output"></div>
+				</section>
+
+				<section>
+					<h2>Agenda</h2>
+					<ul class="spaced">
+						<li><span class="strike">HTML attributes</span></li>
+						<li>DOM API</li>
+						<li>CSS hooks</li>
+						<li>How to use constraint validation today</li>
+					</ul>
 				</section>
 
 				<section>
@@ -235,12 +350,13 @@
 				</section>
 
 				<section>
-					<h2>DOM API</h2>
-					<ul>
+					<h2>Constaint Validation API</h2>
+					<ul class="spaced">
 						<li><code>willValidate</code></li>
 						<li><code>validity</code></li>
 						<li><code>validationMessage</code></li>
 						<li><code>checkValidity()</code></li>
+						<li><code>reportValidity()</code></li>
 						<li><code>setCustomValidity()</code></li>
 					</ul>
 				</section>
@@ -312,6 +428,32 @@
 				</section>
 
 				<section>
+					<h2>reportValidity()</h2>
+					<p>Same as checkValidity(), but show the bubble.</p>
+					<p><em>Not supported in any browsers yet.</em></p>
+				</section>
+
+				<section>
+					<h2 class="no_casing">setCustomValidity()</h2>
+					<p>Set validationMessage and create custom validation rules.</p>
+<pre class="language-markup" style="font-size: 0.7em;">
+<code contenteditable>&lt;form id="form"&gt;
+  &lt;input type="text" id="input-2"&gt;
+  &lt;button type="submit"&gt;Go&lt;/button&gt;
+&lt;/form&gt;
+&lt;script&gt;
+  var input = document.getElementById( "input-2" );
+  input.setCustomValidity( "Custom error message" );
+&lt;/script&gt;</code>
+</pre>
+					<div class="output"></div>
+				</section>
+
+				<section>
+					<h2>invalid event</h2>
+				</section>
+
+				<section>
 					<h2 class="no_casing">invalid event</h2>
 <pre class="language-markup" style="font-size: 0.7em;">
 <code contenteditable>&lt;form id="form"&gt;
@@ -333,19 +475,83 @@
 				</section>
 
 				<section>
-					<h2 class="no_casing">setCustomValidity</h2>
-					<p>Set validationMessage and create custom validation rules.</p>
+					<h2 class="no_casing">invalid event</h2>
 <pre class="language-markup" style="font-size: 0.7em;">
-<code contenteditable>&lt;form id="form"&gt;
-  &lt;input type="text" id="input-2"&gt;
-  &lt;button type="submit"&gt;Go&lt;/button&gt;
+<code contenteditable>&lt;form&gt;
+  &lt;input type="text" id="input-10" required&gt;
+  &lt;button&gt;Go&lt;/button&gt;
 &lt;/form&gt;
 &lt;script&gt;
-  var input = document.getElementById( "input-2" );
-  input.setCustomValidity( "Custom error message" );
+  document.getElementById( "input-10" )
+    .addEventListener( "invalid", function(event) {
+      var text = document.createTextNode( "INVALID!" );
+      event.target.parentNode.appendChild( text );
+    });
 &lt;/script&gt;</code>
 </pre>
 					<div class="output"></div>
+				</section>
+
+				<section>
+					<h2 class="no_casing">invalid event</h2>
+<pre class="language-markup constrained" style="font-size: 0.7em;">
+<code contenteditable>&lt;form&gt;
+  &lt;input type="text" id="test-1" required&gt;
+  &lt;input type="text" id="test-2" required&gt;
+  &lt;button&gt;Go&lt;/button&gt;
+&lt;/form&gt;
+&lt;script&gt;
+  function border( event ) {
+    event.target.style.border = "2px solid red";
+  }
+  document.getElementById( "test-1" )
+    .addEventListener( "invalid", border );
+  document.getElementById( "test-2" )
+    .addEventListener( "invalid", border );
+&lt;/script&gt;</code>
+</pre>
+					<div class="output"></div>
+				</section>
+
+				<section>
+					<h2>Showing all error messages</h2>
+					<p data-height="623" data-theme-id="0" data-slug-hash="eLvlf" data-user="tjvantoll" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/tjvantoll/pen/eLvlf'>HTML5 Form Validation - Show All Error Messages on Submit</a> by TJ VanToll (<a href='http://codepen.io/tjvantoll'>@tjvantoll</a>) on <a href='http://codepen.io'>CodePen</a></p>
+<script async src="http://codepen.io/assets/embed/ei.js"></script>
+				</section>
+
+				<section>
+					<h2>Showing all error messages</h2>
+					<p><a href="http://tjvantoll.com/2012/08/05/html5-form-validation-showing-all-error-messages/">http://tjvantoll.com/2012/08/05/html5-form-validation-showing-all-error-messages/</a></p>
+				</section>
+
+				<section>
+					<h2><a href="http://html5.org/tools/web-apps-tracker?from=7752&to=7753">Spec changes</a></h2>
+					<p>An invalid event on forms!</p>
+					<img src="/img/form-invalid.png">
+				</section>
+
+				<section>
+					<h2>No valid event, but...</h2>
+<pre class="language-javascript" style="font-size: 0.7em;">
+<code>document.querySelectorAll( "input" )
+    .addEventListener( "change", function(event) {
+        if ( event.target.validity.valid ) {
+            // Field contains valid data.
+        } else {
+            // Field contains invalid data.
+        }
+});</code>
+</pre>
+				</section>
+
+				<section>
+					<h2>Agenda</h2>
+					<ul class="spaced">
+						<li><span class="strike">HTML attributes</span></li>
+						<li><span class="strike">DOM API</span></li>
+						<li>CSS hooks</li>
+						<li>How to use constraint validation today</li>
+					</ul>
 				</section>
 
 				<section>
@@ -478,33 +684,13 @@ for ( var i = 0; i < forms.length; i++ ) {
 				</section>
 
 				<section>
-					<h2>Turning validation off</h2>
-				</section>
-
-				<section>
-					<h2 class="no_casing">novalidate attribute</h2>
-					<p>Boolean attribute that can be applied to &lt;form&gt; elements to prevent validation.</p>
-<pre class="language-markup" style="font-size: 0.7em;">
-<code contenteditable>&lt;form novalidate&gt;
-  &lt;input type="text" required&gt;
-  &lt;button type="submit"&gt;Go&lt;/button&gt;
-&lt;/form&gt;</code>
-</pre>
-					<div class="output"></div>
-				</section>
-
-				<section>
-					<h2 class="no_casing">formnovalidate attribute</h2>
-					<p>Boolean attribute that can be applied to submit buttons to prevent validation.</p>
-<pre class="language-markup" style="font-size: 0.7em;">
-<code contenteditable>&lt;form&gt;
-  &lt;input type="text" required&gt;
-  &lt;button type="submit"&gt;Validate&lt;/button&gt;
-  &lt;button type="submit" formnovalidate&gt;
-    Do NOT Validate&lt;/button&gt;
-&lt;/form&gt;</code>
-</pre>
-					<div class="output"></div>
+					<h2>Agenda</h2>
+					<ul class="spaced">
+						<li><span class="strike">HTML attributes</span></li>
+						<li><span class="strike">DOM API</span></li>
+						<li><span class="strike">CSS hooks</span></li>
+						<li>How to use constraint validation today</li>
+					</ul>
 				</section>
 
 				<section>
@@ -573,7 +759,7 @@ for ( var i = 0; i < forms.length; i++ ) {
 
 				<section>
 					<h1>Thanks</h1>
-					<h3><a href="http://tjvantoll.com">TJ VanToll</a> / <a href="http://twitter.com/tjvantoll">@tjvantoll</a></h3>
+					<h3 class="no_casing"><a href="http://tjvantoll.com">TJ VanToll</a> / <a href="http://twitter.com/tjvantoll">@tjvantoll</a></h3>
 				</section>
 			</div>
 		</div>

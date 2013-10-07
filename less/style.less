@@ -1,7 +1,20 @@
 .spaced { margin-top: 0.25em; }
 .spaced li { margin-bottom: 0.5em; }
 
+.reveal section > h2 { text-transform: none; }
 .no_casing { text-transform: none !important; }
+.strike {
+	text-decoration: line-through;
+	position: relative;
+	&::after {
+		content: '';
+		border-bottom: 5px solid red;
+		width: 100%;
+		position: absolute;
+		right: 0;
+		top: 50%;
+	}
+}
 
 img.full_slide {
 	width: 100%;
@@ -38,7 +51,6 @@ section .output {
 	}
 	input, button {
 		font-size: 1em;
-		max-width: 300px;
 	}
 }
 .no_reset {
