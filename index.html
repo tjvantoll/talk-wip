@@ -255,6 +255,18 @@
 				</section>
 
 				<section>
+					<h2>x-moz-errormessage</h2>
+<pre class="language-markup">
+<code contenteditable>&lt;form&gt;
+  &lt;input type="text" required
+    x-moz-errormessage="Hello World"&gt;
+  &lt;button&gt;Go&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+					<div class="output"></div>
+				</section>
+
+				<section>
 					<h2 class="no_casing"><a href="http://html5pattern.com/">http://html5pattern.com</a></h2>
 					<img src="/img/html-patterns.png">
 				</section>
@@ -271,21 +283,9 @@
 					<div class="output"></div>
 				</section>
 
-				<section>
-					<h2>x-moz-errormessage</h2>
-<pre class="language-markup">
-<code contenteditable>&lt;form&gt;
-  &lt;input type="text" required
-    x-moz-errormessage="Hello World"&gt;
-  &lt;button&gt;Go&lt;/button&gt;
-&lt;/form&gt;
-</code></pre>
-					<div class="output"></div>
-				</section>
-
-				<section>
+				<section id="required">
 					<h2>required</h2>
-<pre class="language-markup">
+<pre class="language-markup constrained" style="font-size: 0.7em;">
 <code contenteditable>&lt;form&gt;
   &lt;input required&gt;
   &lt;input type="checkbox" required&gt;
@@ -481,6 +481,33 @@
 				</section>
 
 				<section>
+					<h2 class="no_casing">Password Fields</h2>
+<pre class="language-markup" style="font-size: 0.7em;">
+<code contenteditable>&lt;form id="form"&gt;
+  &lt;input type="password" id="pass-1" required&gt;
+  &lt;input type="password" id="pass-2" required&gt;
+  &lt;button type="submit"&gt;Go&lt;/button&gt;
+&lt;/form&gt;
+&lt;script&gt;
+  var password1 = document.getElementById( "pass-1" ),
+    password2 = document.getElementById( "pass-2" );
+
+  function checkPasswordValidity() {
+    if ( password1.value != password2.value ) {
+      password1.setCustomValidity( "Passwords must match." );
+    } else {
+      password1.setCustomValidity( "" );
+    }
+  }
+
+  password1.addEventListener( "change", checkPasswordValidity );
+  password2.addEventListener( "change", checkPasswordValidity );
+&lt;/script&gt;</code>
+</pre>
+					<div class="output"></div>
+				</section>
+
+				<section>
 					<h2>invalid event</h2>
 				</section>
 
@@ -547,6 +574,11 @@
 				<section>
 					<h2>Showing all error messages</h2>
 					<a href="demos/messages.html">Demo</a>
+				</section>
+
+				<section>
+					<h2>Showing all error messages</h2>
+					<a href="http://tjvantoll.com/2012/08/05/html5-form-validation-showing-all-error-messages/">http://tjvantoll.com/2012/08/05/html5-form-validation-showing-all-error-messages/</a>
 				</section>
 
 				<section>
@@ -703,16 +735,18 @@
 
 				<section>
 					<h2>Turning the bubbles off</h2>
-<pre class="constrained language-javascript" style="font-size: 0.7em;">
-<code>var forms = document.getElementsByTagName( "form" );
-for ( var i = 0; i < forms.length; i++ ) {
-    forms[i].addEventListener( "invalid", function( e ) {
-        e.preventDefault();
-        // IMPORTANT! Implement your own means of displaying
-        // errors to users.
-        // e.target.validationMessage has the message
-    }, true );
-}</code></pre>
+<pre class="constrained language-markup" style="font-size: 0.7em;">
+<code contenteditable>&lt;form id="form-b"&gt;
+    &lt;input required&gt;
+    &lt;button&gt;Go&lt;/button&gt;
+&lt;/form&gt;
+&lt;script&gt;
+    document.getElementById( "form-b" )
+        .addEventListener( "invalid", function( event ) {
+            event.preventDefault();
+        }, true );
+&lt;/script&gt;</code></pre>
+					<div class="output"></div>
 				</section>
 
 				<section>
