@@ -408,6 +408,17 @@
 				</section>
 
 				<section>
+					<h2>Use care with hidden fields</h2>
+<pre class="language-markup">
+<code contenteditable>&lt;form&gt;
+    &lt;input type="text" required&gt;
+    &lt;button&gt;Go&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+					<div class="output"></div>
+				</section>
+
+				<section>
 					<h2 style="text-transform: none;">validity</h2>
 					<p>A <a href="http://www.whatwg.org/specs/web-apps/current-work/#validitystate">ValidityState</a> object with the following boolean properties:</p>
 					<ul>
@@ -602,17 +613,6 @@
 				</section>
 
 				<section>
-					<h2>Use care with hidden fields</h2>
-<pre class="language-markup">
-<code contenteditable>&lt;form&gt;
-    &lt;input type="text" required&gt;
-    &lt;button&gt;Go&lt;/button&gt;
-&lt;/form&gt;
-</code></pre>
-					<div class="output"></div>
-				</section>
-
-				<section>
 					<h2>Agenda</h2>
 					<ul class="spaced">
 						<li><span class="strike">HTML attributes</span></li>
@@ -702,6 +702,11 @@
 				<section>
 					<h2>CSS Selectors Level 4 Spec</h2>
 					<img src="img/user_error.png">
+				</section>
+
+				<section>
+					<p>Only use :valid and :invalid after interaction</p>
+					<a href="demos/interact.html">Demo</a>
 				</section>
 
 				<section>
