@@ -527,13 +527,7 @@
 
 				<section>
 					<h2>Showing all error messages</h2>
-					<p data-height="623" data-theme-id="0" data-slug-hash="eLvlf" data-user="tjvantoll" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/tjvantoll/pen/eLvlf'>HTML5 Form Validation - Show All Error Messages on Submit</a> by TJ VanToll (<a href='http://codepen.io/tjvantoll'>@tjvantoll</a>) on <a href='http://codepen.io'>CodePen</a></p>
-<script async src="http://codepen.io/assets/embed/ei.js"></script>
-				</section>
-
-				<section>
-					<h2>Showing all error messages</h2>
-					<p><a href="http://tjvantoll.com/2012/08/05/html5-form-validation-showing-all-error-messages/">http://tjvantoll.com/2012/08/05/html5-form-validation-showing-all-error-messages/</a></p>
+					<a href="demos/messages.html">Demo</a>
 				</section>
 
 				<section>
@@ -611,6 +605,21 @@
 					<aside class="notes">
 						Per the spec, :valid and :invalid apply to form nodes as well. Only implemented in Firefox though.
 					</aside>
+				</section>
+
+				<section>
+					<p>Per the spec, :valid and :invalid apply to form nodes as well. <em>Only implemented in Firefox.</em></p>
+<pre class="language-markup" style="font-size: 0.7em;">
+<code contenteditable>&lt;form id="form-a"&gt;
+  &lt;input type="text" required value="Lorem Ipsum"&gt;
+  &lt;input type="text" required&gt;
+&lt;/form&gt;
+&lt;style&gt;
+  #form-a:valid { border: 2px solid green; }
+  #form-a:invalid { border: 2px solid red; }
+&lt;/style&gt;</code>
+</pre>
+					<div class="output"></div>
 				</section>
 
 				<section>
