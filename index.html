@@ -161,11 +161,6 @@
 				</section>
 
 				<section>
-					<h2>Bubbles!</h2>
-					<img src="img/browser_screenshots.png" alt="Display of required fields in supporting browsers">
-				</section>
-
-				<section>
 					<h2>Agenda</h2>
 					<ul class="spaced">
 						<li>HTML attributes</li>
@@ -255,27 +250,15 @@
 				</section>
 
 				<section>
-					<h2>x-moz-errormessage</h2>
-<pre class="language-markup">
-<code contenteditable>&lt;form&gt;
-  &lt;input type="text" required
-    x-moz-errormessage="Hello World"&gt;
-  &lt;button&gt;Go&lt;/button&gt;
-&lt;/form&gt;
-</code></pre>
-					<div class="output"></div>
-				</section>
-
-				<section>
 					<h2 class="no_casing"><a href="http://html5pattern.com/">http://html5pattern.com</a></h2>
-					<img src="/img/html-patterns.png">
+					<img src="img/html-patterns.png">
 				</section>
 
 				<section>
 					<h2>pattern</h2>
 <pre class="language-markup constrained">
 <code contenteditable>&lt;form&gt;
-  &lt;input type="text" placeholder="yyyy-mm-dd"
+  &lt;input type="text"
     pattern="(?:19|20)(?:(?:[13579][26]|[02468][048])-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))|(?:[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:29|30))|(?:(?:0[13578]|1[02])-31)))"&gt;
   &lt;button&gt;Go&lt;/button&gt;
 &lt;/form&gt;
@@ -337,7 +320,7 @@
 				</section>
 
 				<section>
-					<h2>Preventing submission</h2>
+					<h2>Preventing validation</h2>
 				</section>
 
 				<section>
@@ -519,6 +502,18 @@
 				</section>
 
 				<section>
+					<h2>x-moz-errormessage</h2>
+<pre class="language-markup">
+<code contenteditable>&lt;form&gt;
+  &lt;input type="text" required
+    x-moz-errormessage="Hello World"&gt;
+  &lt;button&gt;Go&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+					<div class="output"></div>
+				</section>
+
+				<section>
 					<h2>invalid event</h2>
 				</section>
 
@@ -595,21 +590,7 @@
 				<section>
 					<h2><a href="http://html5.org/tools/web-apps-tracker?from=7752&to=7753">Spec changes</a></h2>
 					<p>An invalid event on forms!</p>
-					<img src="/img/form-invalid.png">
-				</section>
-
-				<section>
-					<h2>No valid event, but...</h2>
-<pre class="language-javascript" style="font-size: 0.7em;">
-<code>document.querySelectorAll( "input" )
-    .addEventListener( "change", function(event) {
-        if ( event.target.validity.valid ) {
-            // Field contains valid data.
-        } else {
-            // Field contains invalid data.
-        }
-});</code>
-</pre>
+					<img src="img/form-invalid.png">
 				</section>
 
 				<section>
@@ -710,6 +691,11 @@
 				</section>
 
 				<section>
+					<h2>Bubbles!</h2>
+					<img src="img/browser_screenshots.png" alt="Display of required fields in supporting browsers">
+				</section>
+
+				<section>
 					<h2>Styling the Bubbles</h2>
 					<p class="fragment">You can't.</p>
 				</section>
@@ -729,8 +715,8 @@
 
 				<section>
 					<h2>You used to be able to do this</h2>
-					<img src="/img/webkit-validation-bubble.png">
-					<img src="/img/webkit-validation-bubble-pretty.png">
+					<img src="img/webkit-validation-bubble.png">
+					<img src="img/webkit-validation-bubble-pretty.png">
 				</section>
 
 				<section>
@@ -812,20 +798,30 @@
 				</section>
 
 				<section>
+					<h2>Server side validation</h2>
+					<a href="demos/server.html">Demo</a>
+				</section>
+
+				<section>
 					<h2>Option #2</h2>
 					<p>Polyfill</p>
 				</section>
 
 				<section>
 					<h2>H5F</h2>
+					<a href="http://alistapart.com/d/forward-thinking-form-validation/enhanced_2.html">Demo</a><br>
 					<a href="https://github.com/ryanseddon/H5F">https://github.com/ryanseddon/H5F</a>
 					<img src="img/h5f.png">
 				</section>
 
 				<section>
 					<h2 class="no_casing">Webshims</h2>
-					<a href="http://afarkas.github.io/webshim/demos/">http://afarkas.github.io/webshim/demos/</a>
+					<a href="http://afarkas.github.io/webshim/demos/demos/webforms.html">http://afarkas.github.io/webshim/demos/demos/webforms.html</a>
 					<img src="img/webshims.png">
+				</section>
+
+				<section>
+					<p>Wrapping up</p>
 				</section>
 
 				<section>

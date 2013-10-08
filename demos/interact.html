@@ -4,10 +4,10 @@
 	<meta charset="utf-8">
 	<title>Only show :valid & :invalid after interaction</title>
 	<style>
-		.interacted :valid:not(button) {
+		.interacted :valid:not(button), .interacted:valid {
 			border: 2px solid green;
 		}
-		.interacted :invalid {
+		.interacted :invalid, .interacted:invalid {
 			border: 2px solid red;
 		}
 	</style>
