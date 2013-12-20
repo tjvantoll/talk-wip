@@ -459,17 +459,150 @@ find( "p" ).forEach(function( p ) {
 	</ol>
 </section>
 
+<section>
+	<h2 style="line-height: 1.1;">jQuery Core File Size<br>(minified and gzipped)</h2>
+	<style>
+		#version-list b { display: inline-block; width: 125px; }
+	</style>
+	<ul id="version-list" class="spaced">
+		<li><b>1.10.2:</b> 32.00 KB</li>
+		<li><b>2.0.3:</b> 28.56 KB</li>
+	</ul>
+</section>
 
+<section>
+	<h2>Is that too big for mobile?</h2>
+</section>
 
+<section>
+	<pre class="language-markup"><code>&lt;script src="jquery.js"&gt;&lt;/script&gt;</code></pre>
+</section>
 
+<section>
+	<h2>At a high level, the browser:</h2>
+	<ul class="spaced">
+		<li>Downloads the script</li>
+		<li>Parses / Executes the script</li>
+	</ul>
+</section>
 
+<section>
+	<h2>At a high level, the browser:</h2>
+	<ul class="spaced">
+		<li class="emphasize">Downloads the script</li>
+		<li>Parses / Executes the script</li>
+	</ul>
+</section>
 
+<section>
+	<h2>Importance of reducing round trips</h2>
+	<ul class="spaced">
+		<li>In 2012, the average RTT (Round Trip Time) time was 344ms in the US and 372ms in the UK.</li>
+		<li>In 2012 the average download throughput was 1.6 Mbps in the US and 1.4 Mbps in the UK.</li>
+	</ul>
+	<a href="http://www.slideshare.net/patrickmeenan/velocity-2012-taming-the-mobile-beast">(source)</a>
+</section>
 
+<section>
+	<h2>Reducing round trips > Reducing file size</h2>
+</section>
 
+<section>
+	<h2>Concatenate jQuery with your app's other scripts</h2>
 
+<pre class="language-markup"><code>&lt;!-- before --&gt;
+&lt;script src="jquery.js"&gt;&lt;/script&gt;
+&lt;script src="app.js"&gt;&lt;/script&gt;
 
+&lt;!-- after --&gt;
+&lt;script src="app.js"&gt;&lt;/script&gt;
+</code></pre>
+</section>
 
+<section>
+	<h2>Don't load jQuery from an external CDN.</h2>
+	<img src="img/jquery-stats.png">
+	<br><a href="http://www.stevesouders.com/blog/2013/03/18/http-archive-jquery/">(source)</a>
+	<aside class="notes">
+		<ul>
+			<li>Extra round trip for file</li>
+			<li>Potentially an extra round trip for the DNS lookup</li>
+		</ul>
+	</aside>
+</section>
 
+<section>
+	<h2>There are more important things</h2>
+	<ul class="spaced">
+		<li>The average web site is now 1701KB (as of December 2013) (<a href="http://httparchive.org/trends.php#bytesTotal&reqTotal)">source</a>).</li>
+		<li>At 28.56KB, jQuery core is 1.67% of that.</li>
+		<li>Gzip generally reduces the response size of resources by ~70% (<a href="http://developer.yahoo.com/performance/rules.html">source</a>).</li>
+		<li>In 2012 only 46% of resources were served with appropriate cache headers (<a href="http://www.stevesouders.com/blog/2012/03/22/cache-them-if-you-can/">source</a>).
+	</ul>
+</section>
+
+<section>
+	<h2>At a high level, the browser:</h2>
+	<ul class="spaced">
+		<li>Downloads the script</li>
+		<li class="emphasize">Parses / Executes the script</li>
+	</ul>
+</section>
+
+<section>
+	<h2>Timing the browser's parsing is hard.</h2>
+	<p>Bytes --> Text --> AST --> JIT Compilation -> Execution</p>
+</section>
+
+<section>
+	<img src="img/parse-conversation.png">
+	<a href="https://twitter.com/tjvantoll/status/388339732557471744">https://twitter.com/tjvantoll/status/388339732557471744</a>
+</section>
+
+<section>
+	<h2>Rough idea of parse times</h2>
+<pre class="language-markup constrained"><code>&lt;script&gt;var start = new Date();&lt;/script&gt;
+&lt;script&gt;
+    /* jQuery's minified source code in its entirety */
+&lt;/script&gt;
+&lt;script&gt;alert( new Date() - start );&lt;/script&gt;
+</code></pre>
+</section>
+
+<section>
+	<p>Raw data of 5 loads in each browser. Times are in ms.</p>
+<pre class="language-text really-constrained"><code>Browser                 | jQuery 1.10.2            | jQuery 2.0.3 
+------------------------|--------------------------|-------------------------
+IE 11                   | 18, 20, 20, 20, 24       | 18, 21, 14, 16, 15
+Chrome 31               | 20, 8, 6, 5, 7           | 15, 8, 5, 7, 6
+Safari 7                | 11, 4, 4, 4, 4           | 9, 5, 3, 3, 2
+Firefox 26              | 12, 13, 13, 12, 13       | 12, 12, 11, 12, 12
+
+iOS7 Safari             | 60, 39, 58, 56, 58       | 40, 32, 37. 69, 40
+Android 2.2             | 1080, 266, 434, 271, 470 | 928, 264, 494, 315, 220
+Android 4.0             | 531, 141, 153, 112, 105  | 453, 106, 104, 145, 148
+Chrome 31 (Android 4.4) | 271, 126, 101, 68, 53    | 219, 86, 38, 86, 123</code></pre>
+</section>
+
+<section>
+	<h3 style="line-height: 1.2; font-size: 1.7em;" class="no_casing">The painfully slow parsing and interpretation of scripts on mobile browsers - particularly older Android ones - is the only compelling reason to prefer small JavaScript libraries.</h3>
+</section>
+
+<section>
+	<h2>Moore's Law</h2>
+	<blockquote>Moore's law is the observation that, over the history of computing hardware, the number of transistors on integrated circuits doubles approximately every two years.</blockquote>
+	<a href="http://en.wikipedia.org/wiki/Moore's_law">http://en.wikipedia.org/wiki/Moore's_law</a>
+	<aside class="notes">
+		jQuery reduces the amount of code that YOU have to write and ship.
+	</aside>
+</section>
+
+<section>
+	<h2>Include only what you need</h2>
+	<ul>
+		<li>AMD in jQuery, jQuery UI, jQuery Mobile, Kendo UI</li>
+	</ul>
+</section>
 
 <section>
 	<h2>Main anti-jQuery arguments:</h2>
@@ -495,7 +628,25 @@ find( "p" ).forEach(function( p ) {
 </section>
 
 <section>
-	<h2></h2>
+	<blockquote>"Remember, jQuery is an amazing library that makes all of our lives easier. But you should always choose to use native DOM methods if they are available to you."</blockquote>
+	<a href="http://www.leebrimelow.com/native-methods-jquery/">http://www.leebrimelow.com/native-methods-jquery/</a>
+</section>
+
+<section>
+	<img src="img/comparison.png">
+	<a href="http://jsperf.com/jquery-vs-queryselectorall-selection">http://jsperf.com/jquery-vs-queryselectorall-selection</a>
+</section>
+
+<section>
+	<blockquote>"Premature optimization is the root of all evil."</blockquote>-<a href="http://en.wikipedia.org/wiki/Donald_Knuth">Donald Knuth</a>
+</section>
+
+<section>
+	<p>Native methods will always be faster, but in the vast majority of situations it doesn't matter.</p>
+</section>
+
+<section>
+	<p><a href="tests/boxes.html">Comparison of $.fn.animate and CSS3 Animations</a></p>
 </section>
 
 <section>
@@ -510,85 +661,7 @@ find( "p" ).forEach(function( p ) {
 	<h2></h2>
 </section>
 
-<section>
-	<h2></h2>
-</section>
 
-<section>
-	<h2></h2>
-</section>
-
-<section>
-	<h2></h2>
-</section>
-
-<section>
-	<h2></h2>
-</section>
-
-<section>
-	<h2></h2>
-</section>
-
-<section>
-	<h2></h2>
-</section>
-
-<section>
-	<h2></h2>
-</section>
-
-<section>
-	<h2></h2>
-</section>
-
-<section>
-	<h2></h2>
-</section>
-
-<section>
-	<h2></h2>
-</section>
-
-<section>
-	<h2></h2>
-</section>
-
-<section>
-	<h2></h2>
-</section>
-
-<section>
-	<h2></h2>
-</section>
-
-<section>
-	<h2></h2>
-</section>
-
-<section>
-	<h2></h2>
-</section>
-
-<section>
-	<h2></h2>
-</section>
-
-<section>
-	<h2></h2>
-</section>
-
-<section>
-	<h2></h2>
-</section>
-
-<section>
-	<h2></h2>
-</section>
-
-<section>
-	<h2></h2>
-</section>
 
 
 
@@ -604,15 +677,6 @@ find( "p" ).forEach(function( p ) {
 	<h1>Thanks</h1>
 	<h3 class="no_casing"><a href="http://tjvantoll.com">TJ VanToll</a> / <a href="http://twitter.com/tjvantoll">@tjvantoll</a></h3>
 </section>
-
-
-
-
-
-
-
-
-
 
 			</div>
 		</div>

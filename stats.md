@@ -13,15 +13,22 @@ All this data shows that minimizing RTT time (by reducing HTTP requests) if far 
 Answer = yes
 
 
-Browser          | Core 1.10.2 | UI 1.10.3 | Core 2.0.3 | jQuery UI Slider + Dependencies |
------------------|-------------|-----------|------------|---------------------------------|
-IE10             | 26          | 58        | 27         | 10                              |
-Chrome 30        | 18          | 36        | 16         | 7                               |
-Safari 6         | 12          | 23        | 12         | 5                               |
-Firefox 24       | 11          | 19        | 10         | 5                               |
-iOS7 Safari      | 46          | 115       | 39         | 11                              |
-Android 2.3      | 169         | 202       | 142        | 35                              |
-Chrome (Android) | 78          | 107       | 74         | 21                              |
+Raw data of 5 loads in each browser. Times are in ms.
+
+Browser                 | jQuery 1.10.2            | jQuery 2.0.3 
+------------------------|--------------------------|-------------------------
+IE 11                   | 18, 20, 20, 20, 24       | 18, 21, 14, 16, 15
+Chrome 31               | 20, 8, 6, 5, 7           | 15, 8, 5, 7, 6
+Safari 7                | 11, 4, 4, 4, 4           | 9, 5, 3, 3, 2
+Firefox 26              | 12, 13, 13, 12, 13       | 12, 12, 11, 12, 12
+
+iOS7 Safari             | 60, 39, 58, 56, 58       | 40, 32, 37. 69, 40
+Android 2.2             | 1080, 266, 434, 271, 470 | 928, 264, 494, 315, 220
+Android 4.0             | 531, 141, 153, 112, 105  | 453, 106, 104, 145, 148
+Chrome 31 (Android 4.4) | 271, 126, 101, 68, 53    | 219, 86, 38, 86, 123
+
+
+
 
 No IE8 because of http://ejohn.org/blog/accuracy-of-javascript-time/
 
