@@ -103,31 +103,49 @@
 </section>
 
 <section>
+	<img src="img/hater-cat.jpg" class="reset" height="400">
+</section>
+
+<section>
 	<style>
-		#link-list img { margin-bottom: 0; }
-		#link-list a { font-size: 0.6em; display: block; }
+		.link-list { list-style: none !important; }
+		.link-list img { margin-bottom: 0 !important; }
+		.link-list a { font-size: 0.6em; display: block; }
 	</style>
-	<ul style="list-style: none;" id="link-list">
+	<ul class="link-list">
 		<li>
 			<img src="img/haters-2.png" class="reset">
 			<a href="http://www.sitepoint.com/jquip-lightweight-jquery/">http://www.sitepoint.com/jquip-lightweight-jquery/</a>
-		</li>
-		<li>
-			<img src="img/haters-1.png" class="reset">
-			<a href="https://twitter.com/driven_by_data/status/388223218194317312">https://twitter.com/driven_by_data/status/388223218194317312</a>
 		</li>
 		<li>
 			<img src="img/haters-3.png" class="reset">
 			<a href="http://cubiq.org/do-you-really-need-jquery-for-mobile-dev">http://cubiq.org/do-you-really-need-jquery-for-mobile-dev</a>
 		</li>
 		<li>
-			<img src="img/haters-4.png" class="reset">
+			<img src="img/haters-1.png" class="reset">
 			<a href="http://blog.ponyfoo.com/2013/07/09/getting-over-jquery">http://blog.ponyfoo.com/2013/07/09/getting-over-jquery</a>
 		</li>
 	</ul>
 	<aside class="notes">
 		<p>Most of these posts are nicely written. Their argument is not that jQuery is necessarily a bad library, but rather that we have moved beyond jQuery.</p>
 	</aside>
+</section>
+
+<section>
+	<ul class="link-list">
+		<li>
+			<img src="img/haters-ui-1.png" class="reset">
+			<a href="https://twitter.com/driven_by_data/status/388223218194317312">https://twitter.com/driven_by_data/status/388223218194317312</a>
+		</li>
+		<li>
+			<img src="img/haters-ui-2.png" class="reset">
+			<a href="http://blog.ponyfoo.com/2013/07/09/getting-over-jquery">http://blog.ponyfoo.com/2013/07/09/getting-over-jquery</a>
+		</li>
+		<li>
+			<img src="img/haters-ui-3.png" class="reset">
+			<a href="https://twitter.com/dariocravero/status/380438562992558080">https://twitter.com/dariocravero/status/380438562992558080</a>
+		</li>
+	</ul>
 </section>
 
 <section>
@@ -578,7 +596,7 @@ Chrome 31               | 20, 8, 6, 5, 7           | 15, 8, 5, 7, 6
 Safari 7                | 11, 4, 4, 4, 4           | 9, 5, 3, 3, 2
 Firefox 26              | 12, 13, 13, 12, 13       | 12, 12, 11, 12, 12
 
-iOS7 Safari             | 60, 39, 58, 56, 58       | 40, 32, 37. 69, 40
+iOS7 Safari             | 60, 39, 58, 56, 58       | 40, 32, 37, 69, 40
 Android 2.2             | 1080, 266, 434, 271, 470 | 928, 264, 494, 315, 220
 Android 4.0             | 531, 141, 153, 112, 105  | 453, 106, 104, 145, 148
 Chrome 31 (Android 4.4) | 271, 126, 101, 68, 53    | 219, 86, 38, 86, 123</code></pre>
@@ -628,7 +646,7 @@ Chrome 31 (Android 4.4) | 271, 126, 101, 68, 53    | 219, 86, 38, 86, 123</code>
 </section>
 
 <section>
-	<blockquote>"Remember, jQuery is an amazing library that makes all of our lives easier. But you should always choose to use native DOM methods if they are available to you."</blockquote>
+	<blockquote>Remember, jQuery is an amazing library that makes all of our lives easier. But you should always choose to use native DOM methods if they are available to you.</blockquote>
 	<a href="http://www.leebrimelow.com/native-methods-jquery/">http://www.leebrimelow.com/native-methods-jquery/</a>
 </section>
 
@@ -638,7 +656,7 @@ Chrome 31 (Android 4.4) | 271, 126, 101, 68, 53    | 219, 86, 38, 86, 123</code>
 </section>
 
 <section>
-	<blockquote>"Premature optimization is the root of all evil."</blockquote>-<a href="http://en.wikipedia.org/wiki/Donald_Knuth">Donald Knuth</a>
+	<blockquote>Premature optimization is the root of all evil.</blockquote>-<a href="http://en.wikipedia.org/wiki/Donald_Knuth">Donald Knuth</a>
 </section>
 
 <section>
@@ -646,32 +664,131 @@ Chrome 31 (Android 4.4) | 271, 126, 101, 68, 53    | 219, 86, 38, 86, 123</code>
 </section>
 
 <section>
-	<p><a href="tests/boxes.html">Comparison of $.fn.animate and CSS3 Animations</a></p>
+	<h2>classList</h2>
+	<p>jQuery core doesn't use it internally.</p>
+
 </section>
 
 <section>
-	<h2></h2>
+	<h2>jQuery optimizes common code paths</h2>
+	<a href="https://github.com/jquery/sizzle/blob/master/src/sizzle.js">sizzle.js</a>
+<pre class="language-javascript really-constrained"><code>// Easily-parseable/retrievable ID or TAG or CLASS selectors
+var rquickExpr = /^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/;
+
+// Shortcuts
+if ( (match = rquickExpr.exec( selector )) ) {
+    // Speed-up: Sizzle("#ID")
+    if ( (m = match[1]) ) {
+        ...
+    }
+
+    // Speed-up: Sizzle("TAG")
+    } else if ( match[2] ) {
+        ...
+    }
+
+    // Speed-up: Sizzle(".CLASS")
+    } else if ( (m = match[3]) && support.getElementsByClassName && context.getElementsByClassName ) {
+        ...
+    }
+}</code></pre>
 </section>
 
 <section>
-	<h2></h2>
+	<p>jQuery doesn't force you to use its APIs. If you detect a slow code path, switch to native methods.</p>
 </section>
 
 <section>
-	<h2></h2>
+	<h2>Wrapping Up</h2>
 </section>
 
+<section>
+	<h2>Main anti-jQuery arguments:</h2>
+	<ol id="argument-list">
+		<li>
+			<b>API Parity</b><br>
+			The native platform does everything now.
+		</li>
+		<li>
+			<b>Too Big / Bloated</b><br>
+			File size is too big, especially for mobile.
+		</li>
+		<li>
+			<b>Performance</b><br>
+			Native is faster.
+		</li>
+	</ol>
+</section>
 
+<section>
+	<h2>Main anti-jQuery arguments:</h2>
+	<ol id="argument-list">
+		<li>
+			<b>API Parity</b><br>
+			<span style="color: skyblue;">Native APIs are verbose, not easy to use, and there are lots of gotchas.</span>
+		</li>
+		<li>
+			<b>Too Big / Bloated</b><br>
+			<span style="color: skyblue;">Make sure you concatenate, minify, cache, and gzip your scripts.</span>
+		</li>
+		<li>
+			<b>Performance</b><br>
+			<span style="color: skyblue;">Don't prematurely optimize. If you detect delays in your UI, profile then.</span>
+		</li>
+	</ol>
+</section>
 
+<section>
+	<h2 class="no_casing">Build you own jQuery?</h2>
+	<img src="img/zepto.png">
+</section>
 
+<section>
+	<h2 class="no_casing">Build your own jQuery? You give up...</h2>
+	<ul class="spaced">
+		<li>Documentation</li>
+		<li>Plugin system</li>
+		<li>Google-ability</li>
+	</ul>
+</section>
 
+<section>
+	<h2>Foundation 5 switches to back to jQuery</h2>
+	<img src="img/foundation.png">
+	<a href="http://zurb.com/article/1293/why-we-dropped-zepto">http://zurb.com/article/1293/why-we-dropped-zepto</a>
+</section>
 
+<section>
+	<h2>Reasoning</h2>
+	<style>
+		.quote-list { list-style: none !important; }
+		.quote-list blockquote { width: 100%; margin-bottom: 0.5em; }
+	</style>
+	<ul class="quote-list">
+		<li><blockquote>But over time we found that lighter file size did not translate into better performance overall. Sure, Zepto downloaded quickly. But once loaded, it wasn't quite as fast as jQuery.</blockquote></li>
+		<li><blockquote>It didn't help that many third-party plugins required jQuery, not Zepto — in fact, we found that some third party JavaScripts conflicted outright with Zepto.</blockquote></li>
+	</ul>
+	<aside class="notes">
+		The jQuery project loves competition. Libraries like Zepto push both libraries forward.
+	</aside>
+</section>
 
+<section>
+	<h2 class="no_casing">jQuery welcomes competition</h2>
+	<p>It makes both projects better.</p>
+</section>
 
+<section>
+	<h2 class="no_casing">jQuery isn't for everyone</h2>
+	<p>If you have a single button with a click handler, don't use jQuery.</p>
+</section>
 
-
-
-
+<section>
+	<div style="background: #0769AD; display: inline-block;">
+		<img src="img/logo-jquery.png" class="reset">
+	</div>
+	<p>write less, do more.</p>
+</section>
 
 <section>
 	<h1>Thanks</h1>
