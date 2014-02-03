@@ -103,10 +103,6 @@
 </section>
 
 <section>
-	<img src="img/hater-cat.jpg" class="reset" height="400">
-</section>
-
-<section>
 	<style>
 		.link-list { list-style: none !important; }
 		.link-list img { margin-bottom: 0 !important; }
@@ -219,9 +215,6 @@
 		<li>Not easy to use</li>
 		<li>Lots of gotchas</li>
 	</ul>
-	<aside class="notes">
-		<p>How many people think they could - on the first try - code an XHR request with a callback with no syntax errors?</p>
-	</aside>
 </section>
 
 <section>
@@ -231,6 +224,9 @@
 		<li>Not easy to use</li>
 		<li>Lots of gotchas</li>
 	</ul>
+	<aside class="notes">
+		<p>How many people think they could - on the first try - code an XHR request with a callback with no syntax errors?</p>
+	</aside>
 </section>
 
 <section>
@@ -244,6 +240,13 @@ xhr.onload = function( data ) {
 xhr.open( "test.json" );
 xhr.send();
 </code></pre>
+	<aside class="notes">
+		<ul>
+			<li>XMLHttpRequest (capitalization)</li>
+			<li>data --> this.responseText</li>
+			<li>open() takes "get"</li>
+		</ul>
+	</aside>
 </section>
 
 <section>
@@ -257,6 +260,9 @@ xhr.onload = function() {
 xhr.open( "get", "test.json" );
 xhr.send();
 </code></pre>
+	<aside class="notes">
+		How many people can retrieve this JSON file using jQuery?
+	</aside>
 </section>
 
 <section>
@@ -267,6 +273,9 @@ $.getJSON( "test.json" ).then(function( data ) {
     console.log( data );
 });
 </code></pre>
+	<aside class="notes">
+		Less verbose APIs are easier to remember, easier to explain to beginners.
+	</aside>
 </section>
 
 <section>
@@ -305,14 +314,16 @@ $.getJSON( "test.json" ).then(function( data ) {
 </section>
 
 <section>
-	<h2>Add a class name to all paragraphs (wrong)</h2>
+	<h2>Add a class name to all paragraphs</h2>
+	<h2 class="fragment">(wrong)</h2>
 
 <pre class="language-javascript constrained"><code>document.querySelectorAll( "p" ).classList.add( "foo" );
 </code></pre>
 </section>
 
 <section>
-	<h2>Add a class name to all paragraphs (wrong)</h2>
+	<h2>Add a class name to all paragraphs</h2>
+	<h2 class="fragment">(wrong)</h2>
 
 <pre class="language-javascript constrained"><code>document.querySelectorAll( "p" )
     .forEach(function() {
@@ -397,6 +408,7 @@ find( "p" ).forEach(function( p ) {
     console.log( div.querySelectorAll( "> p" ) );
 &lt;/script&gt;
 </code></pre>
+	<a href="http://jsfiddle.net/tj_vantoll/Nt7Vq/">http://jsfiddle.net/tj_vantoll/Nt7Vq/</a>
 
 	<aside class="notes">
 		Leading combinators
@@ -436,6 +448,7 @@ find( "p" ).forEach(function( p ) {
 	<img src="img/sizzle-comments.png">
 </section>
 
+<!--
 <section>
 	<h2>Gotcha #4</h2>
 
@@ -453,6 +466,7 @@ find( "p" ).forEach(function( p ) {
 	<h2 style="line-height: 1.1;">getElementsByClassName() and getElementsByTagName() return live NodeLists</h2>
 	<a href="http://www.nczonline.net/blog/2010/09/28/why-is-getelementsbytagname-faster-that-queryselectorall/">http://www.nczonline.net/blog/2010/09/28/why-is-getelementsbytagname-faster-that-queryselectorall/</a>
 </section>
+-->
 
 <section>
 	<h2>Main anti-jQuery arguments:</h2>
@@ -523,6 +537,9 @@ find( "p" ).forEach(function( p ) {
 
 <section>
 	<h2>Reducing round trips > Reducing file size</h2>
+	<aside class="notes">
+		So what does this mean for jQuery?
+	</aside>
 </section>
 
 <section>
@@ -535,6 +552,9 @@ find( "p" ).forEach(function( p ) {
 &lt;!-- after --&gt;
 &lt;script src="app.js"&gt;&lt;/script&gt;
 </code></pre>
+	<aside class="notes">
+		If you're using jQuery then you have another JavaScript file for the things that your app does.
+	</aside>
 </section>
 
 <section>
@@ -569,7 +589,10 @@ find( "p" ).forEach(function( p ) {
 
 <section>
 	<h2>Timing the browser's parsing is hard.</h2>
-	<p>Bytes --> Text --> AST --> JIT Compilation -> Execution</p>
+	<p>Text --> Bytes --> AST --> JIT Compilation -> Execution</p>
+	<aside class="notes">
+		abstract syntax tree
+	</aside>
 </section>
 
 <section>
@@ -651,16 +674,16 @@ Chrome 31 (Android 4.4) | 271, 126, 101, 68, 53    | 219, 86, 38, 86, 123</code>
 </section>
 
 <section>
-	<img src="img/comparison.png">
-	<a href="http://jsperf.com/jquery-vs-queryselectorall-selection">http://jsperf.com/jquery-vs-queryselectorall-selection</a>
-</section>
-
-<section>
 	<blockquote>Premature optimization is the root of all evil.</blockquote>-<a href="http://en.wikipedia.org/wiki/Donald_Knuth">Donald Knuth</a>
 </section>
 
 <section>
 	<p>Native methods will always be faster, but in the vast majority of situations it doesn't matter.</p>
+</section>
+
+<section>
+	<img src="img/comparison.png">
+	<a href="http://jsperf.com/jquery-vs-queryselectorall-selection">http://jsperf.com/jquery-vs-queryselectorall-selection</a>
 </section>
 
 <section>
@@ -697,6 +720,14 @@ if ( (match = rquickExpr.exec( selector )) ) {
 
 <section>
 	<p>jQuery doesn't force you to use its APIs. If you detect a slow code path, switch to native methods.</p>
+<pre class="language-javascript constrained"><code>$( "div" ).each(function() {
+    this.classList.add( "red" ); 
+});
+
+$( "div" ).on( "click", function() {
+    this.classList.add( "red" ); 
+});
+</code></pre>
 </section>
 
 <section>
