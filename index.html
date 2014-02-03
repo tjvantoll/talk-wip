@@ -66,7 +66,7 @@
 			<li><a href="http://twitter.com/tjvantoll">@tjvantoll</a></li>
 			<li>
 				Developer Advocate
-				<img src="img/icenium.png" class="reset">
+				<img src="img/telerik-logo.png" class="reset">
 			</li>
 			<li>
 				Team Member
@@ -82,24 +82,9 @@
 		<li>All features implemented</li>
 		<li>No bugs</li>
 	</ul>
-</section>
-
-<section>
-	<h2>&lt;disclaimers&gt;</h2>
-</section>
-
-<section>
-	<h2>I'm on the jQuery UI team.</h2>
-	<img src="img/logo-jquery-ui.png" class="reset">
-</section>
-
-<section>
-	<h2>This is a jQuery conference.</h2>
-	<img src="img/conference-logo.png" class="reset">
-</section>
-
-<section>
-	<h2>&lt;/disclaimers&gt;</h2>
+	<aside class="notes">
+		jQuery has been getting a lot of flax lately from the web development world.
+	</aside>
 </section>
 
 <section>
@@ -122,9 +107,6 @@
 			<a href="http://blog.ponyfoo.com/2013/07/09/getting-over-jquery">http://blog.ponyfoo.com/2013/07/09/getting-over-jquery</a>
 		</li>
 	</ul>
-	<aside class="notes">
-		<p>Most of these posts are nicely written. Their argument is not that jQuery is necessarily a bad library, but rather that we have moved beyond jQuery.</p>
-	</aside>
 </section>
 
 <section>
@@ -145,14 +127,67 @@
 </section>
 
 <section>
+	<h2><a href="http://youmightnotneedjquery.com/">youmightnotneedjquery.com</a></h2>
+	<img src="img/youmightnotneedjquery.png">
+	<aside class="notes">
+		<p>Most of these posts are nicely written. Their argument is not that jQuery is necessarily a bad library, but rather that we have moved beyond jQuery. We no longer need it.</p>
+		<p> The web development world is different from when jQuery was written in 2006. (IE 6, Firefox 1.5, Safari 2)</p>
+	</aside>
+</section>
+
+<section>
+	<h3 class="statement">jQuery is about a whole lot more than just normalizing browser behavior. jQuery is as relevant today as it was in 2006.</h3>
+</section>
+
+<section>
+	<h2>&lt;disclaimers&gt;</h2>
+</section>
+
+<section>
+	<h2>I'm on the jQuery team.</h2>
+	<img src="img/logo-jquery-ui.png" class="reset">
+</section>
+
+<section>
+	<h2>I'm writing a book on jQuery UI.</h2>
+	<img src="img/book-cover.jpg" class="reset"><br>
+	<a href="http://manning.com/vantoll">manning.com/vantoll</a>
+</section>
+
+<section>
+	<h2>This is a jQuery conference.</h2>
+	<img src="img/conference-logo.png" class="reset">
+</section>
+
+<section>
+	<h2>&lt;/disclaimers&gt;</h2>
+	<aside class="notes">
+		Being on the jQuery team has given me perspective. Because I often have to work with the native APIs and the DOM without any abstractions, I have a far more respect for the functionality that jQuery provides.
+	</aside>
+</section>
+
+<section>
 	<h2>Main anti-jQuery arguments:</h2>
-	<style>
-		#argument-list li {
-			margin: 0.5em 0;
-		}
-	</style>
-	<ol id="argument-list">
+	<ol class="argument-list">
 		<li>
+			<b>API Parity</b><br>
+			The native platform does everything now.
+		</li>
+		<li>
+			<b>Too Big / Bloated</b><br>
+			File size is too big, especially for mobile.
+		</li>
+		<li>
+			<b>Performance</b><br>
+			Native is faster.
+		</li>
+	</ol>
+</section>
+
+<section>
+	<h2>Main anti-jQuery arguments:</h2>
+	<ol class="argument-list">
+		<li class="highlight">
 			<b>API Parity</b><br>
 			The native platform does everything now.
 		</li>
@@ -232,8 +267,7 @@
 <section>
 	<h2>AJAX request - My first attempt</h2>
 
-<pre class="language-javascript constrained"><code>
-var xhr = new XMLHTTPRequest();
+<pre class="language-javascript constrained"><code>var xhr = new XMLHTTPRequest();
 xhr.onload = function( data ) {
     console.log( data );
 };
@@ -252,8 +286,7 @@ xhr.send();
 <section>
 	<h2>AJAX request - correct</h2>
 
-<pre class="language-javascript constrained"><code>
-var xhr = new XMLHttpRequest();
+<pre class="language-javascript constrained"><code>var xhr = new XMLHttpRequest();
 xhr.onload = function() {
     console.log( this.responseText );
 };
@@ -268,8 +301,7 @@ xhr.send();
 <section>
 	<h2>AJAX request - jQuery</h2>
 
-<pre class="language-javascript constrained"><code>
-$.getJSON( "test.json" ).then(function( data ) {
+<pre class="language-javascript constrained"><code>$.getJSON( "test.json" ).then(function( data ) {
     console.log( data );
 });
 </code></pre>
@@ -281,8 +313,7 @@ $.getJSON( "test.json" ).then(function( data ) {
 <section>
 	<h2>Wrap an element with a &lt;div&gt;</h2>
 
-<pre class="language-markup constrained"><code>
-&lt;p&gt;Hello World&lt;/p&gt;
+<pre class="language-markup constrained"><code>&lt;p&gt;Hello World&lt;/p&gt;
 &lt;script&gt;
     // jQuery
     $( "p" ).wrap( "&lt;div&gt;" );
@@ -338,7 +369,8 @@ $.getJSON( "test.json" ).then(function( data ) {
 </section>
 
 <section>
-	<h2>Add a class name to all paragraphs (right)</h2>
+	<h2>Add a class name to all paragraphs</h2>
+	<h2 class="fragment">(right)</h2>
 
 <pre class="language-javascript constrained"><code>var paragraphs = document.querySelectorAll( "p" );
 for ( var i = 0; i < paragraphs.length; i++ ) {
@@ -409,6 +441,7 @@ find( "p" ).forEach(function( p ) {
 &lt;/script&gt;
 </code></pre>
 	<a href="http://jsfiddle.net/tj_vantoll/Nt7Vq/">http://jsfiddle.net/tj_vantoll/Nt7Vq/</a>
+	<p class="fragment">Result: <i>Uncaught SyntaxError: Failed to execute query: '> p' is not a valid selector.</i></p>
 
 	<aside class="notes">
 		Leading combinators
@@ -418,7 +451,7 @@ find( "p" ).forEach(function( p ) {
 
 <section>
 	<h2>querySelectorAll cannot handle leading <a href="http://reference.sitepoint.com/css/combinators">combinators</a>.</h2>
-	<pre><code>&lt;</code></pre>
+	<pre><code>&gt;</code></pre>
 	<pre><code>+</code></pre>
 	<pre><code>~</code></pre>
 </section>
@@ -435,6 +468,7 @@ find( "p" ).forEach(function( p ) {
 &lt;/script&gt;
 </code></pre>
 	<a href="http://jsfiddle.net/tj_vantoll/8mw87/">http://jsfiddle.net/tj_vantoll/8mw87/</a>
+	<p class="fragment">Result: <i>NodeList[1] (&lt;p&gt;)</i></p>
 
 	<aside class="notes">
 		This is due to the fact that element-rooted queries are handled by “finding all the elements that match the given selector — rooted in the document — then filtering by the ones that have the specified element as an ancestor.
@@ -470,17 +504,12 @@ find( "p" ).forEach(function( p ) {
 
 <section>
 	<h2>Main anti-jQuery arguments:</h2>
-	<style>
-		#argument-list li {
-			margin: 0.5em 0;
-		}
-	</style>
-	<ol id="argument-list">
+	<ol class="argument-list">
 		<li>
 			<b>API Parity</b><br>
 			The native platform does everything now.
 		</li>
-		<li style="font-size: 1.2em; color: skyblue;">
+		<li class="highlight">
 			<b>Too Big / Bloated</b><br>
 			File size is too big, especially for mobile.
 		</li>
@@ -497,8 +526,8 @@ find( "p" ).forEach(function( p ) {
 		#version-list b { display: inline-block; width: 125px; }
 	</style>
 	<ul id="version-list" class="spaced">
-		<li><b>1.10.2:</b> 32.00 KB</li>
-		<li><b>2.0.3:</b> 28.56 KB</li>
+		<li><b>1.11.0:</b> 32.64 KB</li>
+		<li><b>2.1.0:</b> 28.66 KB</li>
 	</ul>
 </section>
 
@@ -529,8 +558,8 @@ find( "p" ).forEach(function( p ) {
 <section>
 	<h2>Importance of reducing round trips</h2>
 	<ul class="spaced">
-		<li>In 2012, the average RTT (Round Trip Time) time was 344ms in the US and 372ms in the UK.</li>
-		<li>In 2012 the average download throughput was 1.6 Mbps in the US and 1.4 Mbps in the UK.</li>
+		<li>In 2012, the average mobile RTT (Round Trip Time) time was 344ms in the US and 372ms in the UK.</li>
+		<li>In 2012 the average mobile download throughput was 1.6 Mbps in the US and 1.4 Mbps in the UK.</li>
 	</ul>
 	<a href="http://www.slideshare.net/patrickmeenan/velocity-2012-taming-the-mobile-beast">(source)</a>
 </section>
@@ -540,6 +569,18 @@ find( "p" ).forEach(function( p ) {
 	<aside class="notes">
 		So what does this mean for jQuery?
 	</aside>
+</section>
+
+<section>
+	<h2>Google's <i>Make the Web Faster</i> Tutorials</h2>
+	<img src="img/google.png">
+	<a href="https://developers.google.com/speed/articles/">https://developers.google.com/speed/articles/</a>
+</section>
+
+<section>
+	<h2>Yahoo's Performance Best Practices</h2>
+	<img src="img/yahoo.png"><br>
+	<a href="http://developer.yahoo.com/performance/rules.html">http://developer.yahoo.com/performance/rules.html</a>
 </section>
 
 <section>
@@ -558,7 +599,24 @@ find( "p" ).forEach(function( p ) {
 </section>
 
 <section>
-	<h2>Don't load jQuery from an external CDN.</h2>
+	<h2>Don't load jQuery from a 3rd party CDN.</h2>
+<pre class="language-markup really-constrained"><code>&lt;script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"&gt;&lt;/script&gt;
+</code></pre>
+	<p>Three RTTs!</p>
+	<ul>
+		<li>DNS lookup</li>
+		<li>TCP connection</li>
+		<li>HTTP GET</li>
+	</ul>
+</section>
+
+<section>
+	<h3 class="no_casing">Cache hits are rare. You must match on</h3>
+	<ul>
+		<li>CDN provider (Google, Microsoft, jQuery)</li>
+		<li>http vs. https</li>
+		<li>Version number</li>
+	</ul>
 	<img src="img/jquery-stats.png">
 	<br><a href="http://www.stevesouders.com/blog/2013/03/18/http-archive-jquery/">(source)</a>
 	<aside class="notes">
@@ -626,7 +684,7 @@ Chrome 31 (Android 4.4) | 271, 126, 101, 68, 53    | 219, 86, 38, 86, 123</code>
 </section>
 
 <section>
-	<h3 style="line-height: 1.2; font-size: 1.7em;" class="no_casing">The painfully slow parsing and interpretation of scripts on mobile browsers - particularly older Android ones - is the only compelling reason to prefer small JavaScript libraries.</h3>
+	<h3 class="statement">The painfully slow parsing and interpretation of scripts on mobile browsers - particularly older Android ones - is the only compelling reason to prefer small JavaScript libraries.</h3>
 </section>
 
 <section>
@@ -674,16 +732,25 @@ Chrome 31 (Android 4.4) | 271, 126, 101, 68, 53    | 219, 86, 38, 86, 123</code>
 </section>
 
 <section>
-	<blockquote>Premature optimization is the root of all evil.</blockquote>-<a href="http://en.wikipedia.org/wiki/Donald_Knuth">Donald Knuth</a>
-</section>
-
-<section>
-	<p>Native methods will always be faster, but in the vast majority of situations it doesn't matter.</p>
+	<h3 class="statement">Native methods will almost always be faster, but in the vast majority of situations it doesn't matter.</h3>
 </section>
 
 <section>
 	<img src="img/comparison.png">
 	<a href="http://jsperf.com/jquery-vs-queryselectorall-selection">http://jsperf.com/jquery-vs-queryselectorall-selection</a>
+</section>
+
+<section>
+	<blockquote>Premature optimization is the root of all evil.</blockquote>-<a href="http://en.wikipedia.org/wiki/Donald_Knuth">Donald Knuth</a>
+</section>
+
+<section>
+	<p>There is a precedent for abstractions remaining part of the platform longterm.</p>
+</section>
+
+<section>
+	<blockquote>I tried using the browser’s native innerHtml and getElementByClassName API methods instead of jQuery’s html and append. I thought native APIs might be easier for the browser to optimize and what I read confirmed that. But for whatever reason, it didn’t make much of a difference for Trello.</blockquote>
+	<a href="http://blog.fogcreek.com/we-spent-a-week-making-trello-boards-load-extremely-fast-heres-how-we-did-it/">http://blog.fogcreek.com/we-spent-a-week-making-trello-boards-load-extremely-fast-heres-how-we-did-it/</a>
 </section>
 
 <section>
@@ -765,7 +832,7 @@ $( "div" ).on( "click", function() {
 		</li>
 		<li>
 			<b>Performance</b><br>
-			<span style="color: skyblue;">Don't prematurely optimize. If you detect delays in your UI, profile then.</span>
+			<span style="color: skyblue;">Don't prematurely optimize. If you detect delays in your UI, optimize then.</span>
 		</li>
 	</ol>
 </section>
@@ -812,7 +879,10 @@ $( "div" ).on( "click", function() {
 
 <section>
 	<h2 class="no_casing">jQuery isn't for everyone</h2>
-	<p>If you have a single button with a click handler, don't use jQuery.</p>
+	<ul class="spaced">
+		<li>If you have a single button with a click handler, don't use jQuery.</li>
+		<li>If you're writing a library, consider whether you really need jQuery as a dependency (just as you would any other library).</li>
+	</ul>
 </section>
 
 <section>
