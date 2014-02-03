@@ -83,7 +83,7 @@
 		<li>No bugs</li>
 	</ul>
 	<aside class="notes">
-		jQuery has been getting a lot of flax lately from the web development world.
+		jQuery has been getting a lot of flak lately from the web development world.
 	</aside>
 </section>
 
@@ -136,7 +136,7 @@
 </section>
 
 <section>
-	<h3 class="statement">jQuery is about a whole lot more than just normalizing browser behavior. jQuery is as relevant today as it was in 2006.</h3>
+	<h3 class="statement">jQuery is about a whole lot more than just normalizing browser behavior.</h3>
 </section>
 
 <section>
@@ -308,24 +308,6 @@ xhr.send();
 	<aside class="notes">
 		Less verbose APIs are easier to remember, easier to explain to beginners.
 	</aside>
-</section>
-
-<section>
-	<h2>Wrap an element with a &lt;div&gt;</h2>
-
-<pre class="language-markup constrained"><code>&lt;p&gt;Hello World&lt;/p&gt;
-&lt;script&gt;
-    // jQuery
-    $( "p" ).wrap( "&lt;div&gt;" );
-
-    // DOM
-    var p = document.querySelector( "p" ),
-        div = document.createElement( "div" );
-
-    p.parentNode.appendChild( div );
-    div.appendChild( p );
-&lt;/script&gt;
-</code></pre>
 </section>
 
 <section>
@@ -572,12 +554,6 @@ find( "p" ).forEach(function( p ) {
 </section>
 
 <section>
-	<h2>Google's <i>Make the Web Faster</i> Tutorials</h2>
-	<img src="img/google.png">
-	<a href="https://developers.google.com/speed/articles/">https://developers.google.com/speed/articles/</a>
-</section>
-
-<section>
 	<h2>Yahoo's Performance Best Practices</h2>
 	<img src="img/yahoo.png"><br>
 	<a href="http://developer.yahoo.com/performance/rules.html">http://developer.yahoo.com/performance/rules.html</a>
@@ -646,16 +622,11 @@ find( "p" ).forEach(function( p ) {
 </section>
 
 <section>
-	<h2>Timing the browser's parsing is hard.</h2>
+	<h2>Parsing JavaScript files is a multiple-step process.</h2>
 	<p>Text --> Bytes --> AST --> JIT Compilation -> Execution</p>
 	<aside class="notes">
 		abstract syntax tree
 	</aside>
-</section>
-
-<section>
-	<img src="img/parse-conversation.png">
-	<a href="https://twitter.com/tjvantoll/status/388339732557471744">https://twitter.com/tjvantoll/status/388339732557471744</a>
 </section>
 
 <section>
@@ -742,10 +713,6 @@ Chrome 31 (Android 4.4) | 271, 126, 101, 68, 53    | 219, 86, 38, 86, 123</code>
 
 <section>
 	<blockquote>Premature optimization is the root of all evil.</blockquote>-<a href="http://en.wikipedia.org/wiki/Donald_Knuth">Donald Knuth</a>
-</section>
-
-<section>
-	<p>There is a precedent for abstractions remaining part of the platform longterm.</p>
 </section>
 
 <section>
