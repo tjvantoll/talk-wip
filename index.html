@@ -76,17 +76,6 @@
 	</div>
 </section>
 
-<section id="utopia">
-	<h2 style="position: relative; z-index: 99999999">Browser Utopia</h2>
-	<ul class="spaced">
-		<li>All features implemented</li>
-		<li>No bugs</li>
-	</ul>
-	<aside class="notes">
-		jQuery has been getting a lot of flak lately from the web development world.
-	</aside>
-</section>
-
 <section>
 	<style>
 		.link-list { list-style: none !important; }
@@ -107,6 +96,9 @@
 			<a href="http://blog.ponyfoo.com/2013/07/09/getting-over-jquery">http://blog.ponyfoo.com/2013/07/09/getting-over-jquery</a>
 		</li>
 	</ul>
+	<aside class="notes">
+		jQuery has been getting a lot of flak lately from the web development world.
+	</aside>
 </section>
 
 <section>
@@ -136,7 +128,31 @@
 </section>
 
 <section>
+	<h3 class="no_casing">List of Current Fixes by <a href="https://twitter.com/rwaldron">@rwaldron</a></h3>
+	<img src="img/rwaldron-gist.png">
+	<a href="https://gist.github.com/rwaldron/8720084#file-reasons-md">https://gist.github.com/rwaldron/8720084#file-reasons-md</a>
+</section>
+
+<section>
+	<h3 class="no_casing">Defense from <a href="https://twitter.com/paulirish">@paulirish</a></h3>
+	<img src="img/irish-dalton.png">
+	<a href="https://docs.google.com/document/d/1LPaPA30bLUB_publLIMF0RlhdnPx_ePXm7oW02iiT6o/edit">https://docs.google.com/document/d/1LPaPA30bLUB_publLIMF0RlhdnPx_ePXm7oW02iiT6o/edit</a>
+</section>
+
+<section>
 	<h3 class="statement">jQuery is about a whole lot more than just normalizing browser behavior.</h3>
+</section>
+
+<section id="utopia">
+	<h2 style="position: relative; z-index: 99999999">Browser Utopia</h2>
+	<ul class="spaced">
+		<li>All features implemented</li>
+		<li>No bugs</li>
+	</ul>
+</section>
+
+<section>
+	<h3 class="statement">jQuery is worth using, even if (when?) it fixes 0 browser bugs.</h3>
 </section>
 
 <section>
@@ -152,11 +168,6 @@
 	<h2>I'm writing a book on jQuery UI.</h2>
 	<img src="img/book-cover.jpg" class="reset"><br>
 	<a href="http://manning.com/vantoll">manning.com/vantoll</a>
-</section>
-
-<section>
-	<h2>This is a jQuery conference.</h2>
-	<img src="img/conference-logo.png" class="reset">
 </section>
 
 <section>
@@ -265,7 +276,11 @@
 </section>
 
 <section>
-	<h2>AJAX request - My first attempt</h2>
+	<h3 class="statement">Without Googling, try to code an XHR that gets a JSON file with a callback.</p>
+</section>
+
+<section>
+	<h2>My first attempt</h2>
 
 <pre class="language-javascript constrained"><code>var xhr = new XMLHTTPRequest();
 xhr.onload = function( data ) {
@@ -284,7 +299,7 @@ xhr.send();
 </section>
 
 <section>
-	<h2>AJAX request - correct</h2>
+	<h2>Correct</h2>
 
 <pre class="language-javascript constrained"><code>var xhr = new XMLHttpRequest();
 xhr.onload = function() {
@@ -299,7 +314,7 @@ xhr.send();
 </section>
 
 <section>
-	<h2>AJAX request - jQuery</h2>
+	<h2>jQuery</h2>
 
 <pre class="language-javascript constrained"><code>$.getJSON( "test.json" ).then(function( data ) {
     console.log( data );
@@ -463,26 +478,6 @@ find( "p" ).forEach(function( p ) {
 	<a href="https://github.com/jquery/jquery/blob/master/src/selector-native.js">selector-native.js</a>
 	<img src="img/sizzle-comments.png">
 </section>
-
-<!--
-<section>
-	<h2>Gotcha #4</h2>
-
-<pre class="language-markup constrained"><code>&lt;p class="big"&gt;&lt;/p&gt;
-&lt;script&gt;
-    var paragraphs = document.getElementsByClassName( "big" );
-    console.log( paragraphs.length );
-    document.body.innerHTML += "&lt;p class='big'&gt;&lt;/p&gt;";
-    console.log( paragraphs.length );
-&lt;/script&gt;
-</code></pre>
-</section>
-
-<section>
-	<h2 style="line-height: 1.1;">getElementsByClassName() and getElementsByTagName() return live NodeLists</h2>
-	<a href="http://www.nczonline.net/blog/2010/09/28/why-is-getelementsbytagname-faster-that-queryselectorall/">http://www.nczonline.net/blog/2010/09/28/why-is-getelementsbytagname-faster-that-queryselectorall/</a>
-</section>
--->
 
 <section>
 	<h2>Main anti-jQuery arguments:</h2>
@@ -703,7 +698,11 @@ Chrome 31 (Android 4.4) | 271, 126, 101, 68, 53    | 219, 86, 38, 86, 123</code>
 </section>
 
 <section>
-	<h3 class="statement">Native methods will almost always be faster, but in the vast majority of situations it doesn't matter.</h3>
+	<h3>Uh, no</h1>
+</section>
+
+<section>
+	<h3 class="statement">Native methods will almost always be faster, but in the vast, vast, VAST majority of situations it doesn't matter.</h3>
 </section>
 
 <section>
@@ -805,51 +804,30 @@ $( "div" ).on( "click", function() {
 </section>
 
 <section>
-	<h2 class="no_casing">Build your own jQuery?</h2>
-	<img src="img/zepto.png">
-</section>
-
-<section>
-	<h2 class="no_casing">Build your own jQuery? You give up...</h2>
-	<ul class="spaced">
-		<li>Documentation</li>
-		<li>Plugin system</li>
-		<li>Google-ability</li>
-	</ul>
-</section>
-
-<section>
-	<h2>Foundation 5 switches to back to jQuery</h2>
-	<img src="img/foundation.png">
-	<a href="http://zurb.com/article/1293/why-we-dropped-zepto">http://zurb.com/article/1293/why-we-dropped-zepto</a>
-</section>
-
-<section>
-	<h2>Reasoning</h2>
-	<style>
-		.quote-list { list-style: none !important; }
-		.quote-list blockquote { width: 100%; margin-bottom: 0.5em; }
-	</style>
-	<ul class="quote-list">
-		<li><blockquote>But over time we found that lighter file size did not translate into better performance overall. Sure, Zepto downloaded quickly. But once loaded, it wasn't quite as fast as jQuery.</blockquote></li>
-		<li><blockquote>It didn't help that many third-party plugins required jQuery, not Zepto — in fact, we found that some third party JavaScripts conflicted outright with Zepto.</blockquote></li>
-	</ul>
-</section>
-
-<section>
-	<h2 class="no_casing">jQuery welcomes competition</h2>
-	<p>It makes both projects better.</p>
-	<aside class="notes">
-		I'm actually pretty impressed with how far the Zepto project has come.
-	</aside>
-</section>
-
-<section>
 	<h2 class="no_casing">jQuery isn't for everyone</h2>
 	<ul class="spaced">
 		<li>If you have a single button with a click handler, don't use jQuery.</li>
 		<li>If you're writing a library, consider whether you really need jQuery as a dependency (just as you would any other library).</li>
 	</ul>
+</section>
+
+<section>
+	<h3 class="no_casing">jQuery's APIs are easier to</h3>
+	<ul>
+		<li>write</li>
+		<li>maintain</li>
+		<li>refactor</li>
+		<li>debug</li>
+		<li>test</li>
+		<li>grep</li>
+		<li>Google</li>
+		<li>teach</li>
+		<li>understand</li>
+		<li>extend</li>
+	</ul>
+	<aside class="notes">
+		But it's important to remember that in the software development industry we're paid to ship software, and if jQuery makes it easier for you to do that, then use it; and don't feel guilty about it.
+	</aside>
 </section>
 
 <section>
