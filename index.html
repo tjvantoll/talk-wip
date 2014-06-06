@@ -37,7 +37,21 @@
 </script></section>
 
 <section>
-	<blockquote><p>"The full Safari engine is inside of iPhone. And so, you can write amazing Web 2.0 and Ajax apps that look exactly and behave exactly like apps on the iPhone. And these apps can integrate perfectly with iPhone services."</p></blockquote>
+	<h2>Agenda</h2>
+	<ul class="spaced">
+		<li>The past</li>
+		<li>Now
+			<ul>
+				<li>Tools!</li>
+				<li>Performance overview</li>
+			</ul>
+		</li>
+		<li>The future</li>
+	</ul>
+</section>
+
+<section>
+	<blockquote><p>"The full Safari engine is inside of iPhone. And so, you can write amazing Web 2.0 and Ajax apps that look exactly and behave exactly like apps on the iPhone."</p></blockquote>
 	<div class="fragment">
 		<p>Steve Jobs, 2007</p>
 		<a href="http://www.cultofmac.com/125180/steve-jobs-was-originally-dead-set-against-third-party-apps-for-the-iphone">(source)</a>
@@ -61,6 +75,7 @@
 
 <section>
 	<h3 style="line-height: 1.2">In 2013, the iOS App Store revenue was higher than the GDP of 60 countries.</h3>
+	<img src="img/jaw-drop.gif">
 </section>
 
 <section>
@@ -72,16 +87,21 @@
 	<img style="max-height: 200px;" src="img/amazon.jpg">
 </section>
 
+<section>
+	<img src="img/platforms.png" style="max-height: 500px;">
+	<p>Table is from Brian Leroux's <a href="http://brian.io/slides/debug-mobile/">excellent Debugging Mobile talk</a>.</p>
+</section>
+
 <section data-markdown><script type="text/template">
 	## Gartner Hype Cycle
-	<img src="img/gartner-hype-cycle.png" style="height: 400px;">
+	<img src="img/hype-cycle-1.png">
 	<br>
 	Image Source: <http://bimandintegrateddesign.com/tag/gartners-hype-cycle/>
 </script></section>
 
 <section>
 	<h2>Hybrid</h2>
-	<img src="img/gartner-hype-cycle-now.png">
+	<img src="img/hype-cycle-2.png">
 </section>
 
 <section>
@@ -94,7 +114,7 @@
 </section>
 
 <section>
-	<img src="img/gartner-hype-cycle-now.png">
+	<img src="img/hype-cycle-3.png">
 </section>
 
 <section data-markdown><script type="text/template">
@@ -128,7 +148,7 @@
 </section>
 
 <section>
-	<img src="img/gartner-hype-cycle-now.png">
+	<img src="img/hype-cycle-4.png">
 </section>
 
 <section data-markdown><script type="text/template">
@@ -153,8 +173,6 @@
 <section data-markdown><script type="text/template">
 	## My Job
 	> "How does Kendo UI Mobile compare to ChocolateChip?"
-
-	<p class="fragment"><i>Some dude, some conference</i></p>
 </script></section>
 
 <section data-markdown><script type="text/template">
@@ -178,15 +196,15 @@
 </section>
 
 <section>
-	<h3 style="line-height: 1.2;">Tooling improvement #1:<br>UI frameworks</h3>
-</section>
-
-<section>
 	<h2>Kendo UI Mobile</h2>
 	<img src="img/kendo-ui.png" style="max-height: 500px;">
 	<p class="fragment">
 		Now free and open source as part of <a href="https://github.com/telerik/kendo-ui-core">Kendo UI Core</a>.
 	</p>
+</section>
+
+<section>
+	<h3 style="line-height: 1.2;">Tooling improvement #1:<br>UI frameworks</h3>
 </section>
 
 <section>
@@ -241,6 +259,12 @@
 </section>
 
 <section>
+	<h2>jsHybugger</h2>
+	<img src="img/jshybugger.png">
+	<p>Works on Android 2.3.3+</p>
+</section>
+
+<section>
 	<h3>Tooling improvement #3: Companion Apps</h3>
 	<img src="img/telerik-companion-app.png">
 	<img src="img/phonegap-developer-app.png">
@@ -248,15 +272,6 @@
 
 <section>
 	<h2>Demo</h2>
-</section>
-
-<section>
-	<h2>PhoneGap Developer App</h2>
-	<img src="img/phonegap-multiple-apps.gif">
-</section>
-
-<section>
-	<h2>Telerik AppBuilder</h2>
 	<img src="img/appbuilder-companion-multiple.gif">
 </section>
 
@@ -272,6 +287,7 @@
 
 <section>
 	<h2>Demo</h2>
+	<img src="img/appbuilder-apps.gif">
 </section>
 
 <section>
@@ -282,6 +298,7 @@
 
 <section>
 	<h2>Demo</h2>
+	<img src="img/appbuilder-status-bar.gif">
 </section>
 
 <section>
@@ -304,12 +321,63 @@
 </section>
 
 <section>
-	<h3>Web View Performance</h3>
-	<ul class="spaced">
-		<li>Hybrid performance is tied to the platform it runs on.</li>
-		<li>Android 4.4 finally utilizes a Chromium-based web view.</li>
-		<li>In iOS7 UIWebViews still have a 4x performance penalty <a href="http://iao.fi/myposts/uiwebview">(source)</a>.</li>
+	<h3>iOS Performance: The Good News</h3>
+	<ul>
+		<li><a href="http://www.macworld.com/article/2010286/lab-tests-ios-6-and-ios-5-performance-differences.html">iOS 6 runs SunSpider 20% faster than iOS 5</a>.</li>
+		<li>
+			<a href="http://www.phonearena.com/news/Nexus-5-performance-review-the-tale-of-benchmarks_id49059">iOS 7 runs SunSpider 12% faster than iOS6</a>.
+		</li>
 	</ul>
+</section>
+
+<section>
+	<h3>iOS Performance: The Bad News</h3>
+	<p>The iOS 7 <code>UIWebView</code> incurs a 3.5x JavaScript performance penalty over the same app run in iOS Safari.</p>
+</section>
+
+<section>
+	<h2>SunSpider</h2>
+	<p>785.0ms vs. 3677.1ms — Safari is ~350% faster!</p>
+	<img src="img/iOS Safari (SunSpider).jpg">
+	<img src="img/Chrome for iOS (SunSpider).jpg">
+</section>
+
+<section>
+	<h2><a href="http://browserbench.org/Speedometer/">Speedometer</a></h2>
+	<p>Safari is ~20% faster.</p>
+	<img src="img/iOS Safari (speedometer).jpg">
+	<img src="img/Chrome for iOS (speedometer).jpg">
+</section>
+
+<section>
+	<h2>OMG <code>WKWebView</code>! OMG! OMG!</h2>
+	<img src="img/9-to-5-mac.png">
+	<a href="http://9to5mac.com/2014/06/03/ios-8-webkit-changes-finally-allow-all-apps-to-have-the-same-performance-as-safari/">http://9to5mac.com/2014/06/03/ios-8-webkit-changes-finally-allow-all-apps-to-have-the-same-performance-as-safari/</a>
+</section>
+
+<section>
+	<img src="img/happy-coach-original.gif">
+</section>
+
+<section>
+	<h2>Performance on Android</h2>
+	<p>Android 4.4 switched to a new Chromium-based WebView.</p>
+</section>
+
+<section>
+	<img src="img/happy-coach.gif">
+</section>
+
+<section>
+	<h2>Moore's Law</h2>
+	<div style="background-color: white;">
+		<img src="img/moores-law.png" style="max-height: 600px;">
+	</div>
+	<a href="http://en.wikipedia.org/wiki/Moore's_law">http://en.wikipedia.org/wiki/Moore's_law</a>
+</section>
+
+<section>
+	<h3 style="line-height: 1.4">The performance of hybrid application will never be on par with native applications, but as speeds improve, hybrid becomes “good enough” for an increasing number of applications.</h3>
 </section>
 
 <section>
@@ -351,7 +419,7 @@
 </section>
 
 <section>
-	Add something that shows platform usage
+	<img src="img/fragmentation.png">
 </section>
 
 <section data-markdown><script type="text/template">
