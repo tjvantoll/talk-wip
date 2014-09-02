@@ -37,8 +37,8 @@
 </section>
 
 <section>
-	<blockquote>“No one uses HTML5 form validation”</blockquote>
-	<p>-Me</p>
+	<blockquote style="font-size: 2em; line-height: 1.2; padding: 0.2em; margin-bottom: 0.5em;">“No one uses HTML5 form validation”</blockquote>
+	<h3>-Me</h3>
 </section>
 
 <section>
@@ -76,13 +76,12 @@
 	<div class="output"></div>
 </section>
 
-
 <section>
 	<h2>Why does no one use it?</h2>
 </section>
 
 <section>
-	<h2>Reasons:</h2>
+	<h2>Problems:</h2>
 	<ol class="spaced">
 		<li>Browser support is weird
 		<li>setCustomValidity() is an odd API</li>
@@ -93,14 +92,57 @@
 	</ol>
 </section>
 
+<section>
+	<h2>Problem #1: Browser support is weird</h2>
+</section>
 
+<section>
+	<img src="images/can-i-use.png">
+	<a href="http://caniuse.com/#feat=form-validation">http://caniuse.com/#feat=form-validation</a>
+</section>
 
+<section>
+	<h3>IE 6–9 have zero support for HTML5 form validation.</h3>
+</section>
 
+<style>
+	.strike { text-decoration: line-through; }
+</style>
+<section>
+	<img style="height: 400px;" src="images/benjamin-button.jpg">
+	<h3 style="line-height: 1.5">The curious case of <span class="strike">Benjamin Button</span> constraint validation on Safari, iOS Safari, and the Android browser.</h3>
+</section>
 
+<section>
+	<h3>Safari/iOS Safari/Android Browser let this submit empty</h3>
+	<pre>
+<code contenteditable class="language-markup">&lt;form&gt;
+    &lt;input required&gt;
+    &lt;button&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code>
+	</pre>
+	<div class="output"></div>
+</section>
 
+<section>
+	<h2>Two scenarios to account for</h2>
+	<ul class="spaced">
+		<li>Old IE</li>
+		<li>WebKit-driven browsers*</li>
+	</ul>
+	<p style="margin-top: 2em; font-size: 0.7em;"><i>*Ok, ok, Blink is WebKit-based, so Chrome is kind of WebKit-driven too, but I need a phrase so let's let this go alright?</i></p>
+</section>
 
+<section>
+	<h2>Client-side validation is no substitute for server-side validation</h2>
+	<pre class="language-markup" style="font-size: 0.7em; padding-bottom: 0;">
+		<code style="position: relative; left: -20px;">curl --data "param1=DELETE * FROM *" http://foo.com/bar.do</code>
+	</pre>
+</section>
 
-
+<section>
+	<h2>Your server is your fallback</h2>
+</section>
 
 <!--
 	45 minutes
