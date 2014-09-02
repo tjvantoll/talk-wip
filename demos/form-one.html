@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Demo One</title>
+
+	<style>
+		.error-messages {
+			display: none;
+			list-style-type: disc;
+			margin: 0 10px 15px 10px;
+			padding: 8px 35px 8px 30px;
+			color: #B94A48;
+			background-color: #F2DEDE;
+			border: 2px solid #EED3D7;
+			border-radius: 4px;
+			text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+		}
+		.error-messages span {
+			font-weight: bold;
+		}
+		.invalid {
+			color: red;
+		}
+	</style>
+</head>
+<body>
+
+<form>
+	<ul class="error-messages"></ul>
+
+	<label for="name">Name:</label>
+	<input id="name" name="name" required>
+
+	<label for="email">Email:</label>
+	<input id="email" name="email" type="email" required>
+
+	<button>Submit</button>
+</form>
+
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script>
+	(function() {
+		$( "form" ).on( "submit", function( event ) {
+			event.preventDefault();
+			$.post( "api-one.php", {
+				name: this.name.value,
+				email: this.email.value
+			}).then( success, failure );
+		});
+
+		function success() {
+			$( "form" ).replaceWith( "<img src='../images/supercorn.gif'>" );
+		}
+		function failure( xhr ) {
+			var errors = xhr.responseJSON.errors,
+				errorList = $( ".error-messages" ).empty().show();
+
+			// Reset state from previous run
+			$( ".invalid" ).removeClass( "invalid" );
+			$( "[aria-invalid]" ).removeAttr( "aria-invalid" );
+
+			Object.keys( errors ).forEach(function( key ) {
+				var label = $( "label[for=" + key + "]" ),
+					field = $( "[name=" + key + "]" ),
+					messages = errors[ key ];
+
+				if ( messages.length > 0 ) {
+					label.addClass( "invalid" );
+					field.attr( "aria-invalid", true );
+				}
+
+				errors[ key ].forEach(function( message ) {
+					errorList.append( "<li>" + message + "</li>" );
+				})
+			});
+
+			// Focus the first invalid field
+			$( ".invalid:first" ).next( "input" ).focus();
+		}
+	}());
+</script>
+</body>
+</html>
