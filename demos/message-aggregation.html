@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Message Aggregation</title>
+
+	<style>
+		.error-messages {
+			display: none;
+			list-style-type: disc;
+			margin: 0 10px 15px 10px;
+			padding: 8px 35px 8px 30px;
+			color: #B94A48;
+			background-color: #F2DEDE;
+			border: 2px solid #EED3D7;
+			border-radius: 4px;
+			text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+		}
+		.error-messages span {
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+
+<form>
+	<ul class="error-messages"></ul>
+
+	<label for="name">Name:</label>
+	<input id="name" name="name" required>
+
+	<label for="email">Email:</label>
+	<input id="email" name="email" type="email" required>
+
+	<button>Submit</button>
+</form>
+
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script>
+	(function() {
+		function handleErrors() {
+			var form = $( this ),
+				errorList = $( ".error-messages", form );
+
+			var showAllErrorMessages = function() {
+				errorList.empty();
+
+				// Find all invalid fields within the form.
+				var invalidFields = form.find( ":invalid" ).each( function( index, node ) {
+
+					// Find the field's corresponding label
+					var label = $( "label[for=" + node.id + "] ");
+
+					errorList
+						.show()
+						.append( "<li><span>" + label.html() + "</span> " + node.validationMessage + "</li>" );
+				});
+			};
+
+			// Support: Safari, iOS Safari, old Android browser
+			form.on( "submit", function( event ) {
+				if ( this.checkValidity && !this.checkValidity() ) {
+					$( this ).find( ":invalid" ).first().focus();
+					event.preventDefault();
+				}
+			});
+
+			// Manually detect form submission attempts
+			$( "input[type=submit], button:not([type=button])", form )
+				.on( "click", showAllErrorMessages );
+
+			$( "input", form ).on( "keypress", function( event ) {
+				var type = $( this ).attr( "type" );
+				if ( event.keyCode == 13 ) {
+					showAllErrorMessages();
+				}
+			});
+		};
+
+		$( "form" ).each( handleErrors );
+	}());
+</script>
+
+</body>
+</html>

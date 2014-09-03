@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Building your own bubbles</title>
+
+	<link rel="stylesheet" href="../bower_components/kendo-ui-core/styles/kendo.common-bootstrap.min.css">
+	<link rel="stylesheet" href="../bower_components/kendo-ui-core/styles/kendo.bootstrap.min.css">
+</head>
+<body>
+
+<form>
+	<label for="email">Email:</label>
+	<input class="k-textbox" type="email" id="email" required>
+
+	<button class="k-button">Go</button>
+</form>
+
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/kendo-ui-core/js/kendo.ui.core.min.js"></script>
+<script>
+	// Suppress the default bubbles
+	document.querySelector( "form" )
+		.addEventListener( "invalid", function( event ) {
+			event.preventDefault();
+		}, true );
+
+	function setErrorMessage() {
+		var email = $( "#email" );
+
+		if ( email[ 0 ].validity.valueMissing ) {
+			email.attr( "title", "Email is required" );
+		} else if ( email[ 0 ].validity.typeMismatch ) {
+			field.attr( "title", "Please provide a valid email address" );
+		} else {
+			field.setCustomValidity( "" );
+		}
+	};
+
+	var email = $( "#email" )
+		.kendoTooltip()
+		.on( "blur", function() {
+			setErrorMessage();
+			email.kendoTooltip( "hide" );
+		})
+		.on( "focus", function() {
+			email.kendoTooltip( "show" );
+		});
+	setErrorMessage();
+
+	// Manually detect form submission attempts
+	$( "input[type=submit], button:not([type=button])" )
+		.on( "click", function() {
+			$( ":invalid" ).first().focus();
+		});
+	$( "input" ).on( "keypress", function( event ) {
+		var type = $( this ).attr( "type" );
+		if ( event.keyCode == 13 ) {
+			$( ":invalid" ).first().focus();
+		}
+	});
+</script>
+
+</body>
+</html>
