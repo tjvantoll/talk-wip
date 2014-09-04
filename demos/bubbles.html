@@ -45,12 +45,6 @@
 		.on( "click", function() {
 			$( ":invalid" ).first().focus();
 		});
-	$( "input" ).on( "keypress", function( event ) {
-		var type = $( this ).attr( "type" );
-		if ( event.keyCode == 13 ) {
-			$( ":invalid" ).first().focus();
-		}
-	});
 </script>
 
 </body>

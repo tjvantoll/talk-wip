@@ -33,13 +33,6 @@
 		.on( "click", function() {
 			$( this ).parents( "form" ).addClass( "interacted" );
 		});
-
-	$( "input" ).on( "keypress", function( event ) {
-		var type = $( this ).attr( "type" );
-		if ( event.keyCode == 13 ) {
-			$( this ).parents( "form" ).addClass( "interacted" );
-		}
-	});
 </script>
 
 </body>

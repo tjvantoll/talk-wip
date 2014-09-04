@@ -19,14 +19,50 @@
 <body><div class="reveal"><div class="slides">
 
 <section>
-	<h2>HTML5 Form Validation — Why no one uses it, and how you can!</h2>
-	<p style="font-size: 1.1em; margin-bottom: 0;">TJ VanToll | <a href="https://twitter.com/tjvantoll">@tjvantoll</a> | <a href="http://tjvantoll.com">tjvantoll.com</a></p>
+	<h1>HTML5 Form Validation</h1>
+	<h2>Why no one uses it, and how you can!</h2>
+	<p style="font-size: 1.1em; margin-bottom: -0.5em; margin-top: 1.5em;">TJ VanToll | <a href="https://twitter.com/tjvantoll">@tjvantoll</a></p>
 	<img src="images/telerik-logo.png" style="height: 150px; margin-top: 0;">
 	<aside class="notes">
-		- I find most conference talks are about things you can't use or things that aren't applicable.
-		- Form validation is practical
-		- Everyone does it
-		- Poll the room
+		- My name is TJ VanToll I work for Telerik (poll room)
+		- We're a software development company, and we specialize in UI tools. Kendo UI?
+		- So I work on Kendo UI 
+		- I'm also a member of the jQuery UI team
+	</aside>
+</section>
+
+<section>
+	<h2>Forms are hard</h2>
+	<pre>
+<code class="language-markup" contenteditable>&lt;form&gt;
+    &lt;input&gt;&lt;input type="radio"&gt;&lt;input type="checkbox"&gt;
+    &lt;input type="file"&gt;&lt;input type="date"&gt;
+    &lt;textarea&gt;&lt;/textarea&gt;
+    &lt;select&gt;&lt;option&gt;option&lt;/option&gt;&lt;/select&gt;
+    &lt;button&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code>
+	</pre>
+	<div class="output"></div>
+	<aside class="notes">
+		- Forms are important
+	</aside>
+</section>
+
+<section>
+	<h2>Traditional form validation is hard</h2>
+	<pre>
+<code class="language-javascript">document.getElementById( "myForm" )
+    .addEventListener( "submit", function( event ) {
+        if ( document.getElementById( "myInput" ).value == "" ) {
+            event.preventDefault();
+            // Show some questionably UX and a11y
+            // friendly error message.
+        }
+    });
+});
+</code></pre>
+	<aside class="notes">
+		
 	</aside>
 </section>
 
@@ -39,6 +75,23 @@
 &lt;/form&gt;</code>
 	</pre>
 	<div class="output"></div>
+	<aside class="notes">
+		- I find most conference talks are about things you can't use or things that aren't applicable.
+		- Form validation is practical
+		- Everyone does it
+		- Poll the room
+	</aside>
+</section>
+
+<section>
+	<h2>Native Form Validation: A quick history</h2>
+	<ul class="spaced">
+		<li>2003: <a href="http://platform.html5.org/history/">Initially specced</a></li>
+		<li>2009: <a href="http://caniuse.com/#search=form validation">Implemented in Opera 10.1</a></li>
+		<li>2011: <a href="http://caniuse.com/#search=form validation">Implemented in Firefox 4</a></li>
+		<li>2011: <a href="http://www.chromestatus.com/features/6091813840486400">Implemented in Chrome 10</a></li>
+		<li>2012: <a href="http://caniuse.com/#search=form validation">Implemented in IE10</a></li>
+	</ul>
 </section>
 
 <section>
@@ -67,7 +120,7 @@
 
 <section>
 	<h2>GitHub</h2>
-	<!-- Gif of GitHub instant email validation -->
+	<img src="images/github-email.png">
 </section>
 
 <section>
@@ -75,7 +128,7 @@
 </section>
 
 <section>
-	<h2>HTML5 form validation has best practices baked in</h2>
+	<h2 style="line-height: 1.1;">HTML5 form validation has best practices baked in</h2>
 	<pre>
 <code class="language-markup">&lt;form&gt;
     &lt;input type="email" required&gt;
@@ -108,10 +161,9 @@
 <section>
 	<img src="images/can-i-use.png">
 	<a href="http://caniuse.com/#feat=form-validation">http://caniuse.com/#feat=form-validation</a>
-</section>
-
-<section>
-	<h3>IE 6–9 have zero support for HTML5 form validation.</h3>
+	<aside class="notes">
+		- IE 6–9 have zero support for HTML5 form validation.
+	</aside>
 </section>
 
 <style>
@@ -137,9 +189,8 @@
 	<h2>Two scenarios to account for</h2>
 	<ul class="spaced">
 		<li>Old IE</li>
-		<li>WebKit-driven browsers*</li>
+		<li>Safari / iOS Safari / Android Browser</li>
 	</ul>
-	<p style="margin-top: 2em; font-size: 0.7em;"><i>*Ok, ok, Blink is WebKit-based, so Chrome is kind of WebKit-driven too, but I need a phrase so let's let this go alright?</i></p>
 </section>
 
 <section>
@@ -151,12 +202,12 @@
 
 <section>
 	<h2>Your server is your fallback</h2>
-	<p><a href="demos/base-form.html">Example</a></p>
+	<p><a target="_blank" href="demos/base-form.html">Example</a></p>
 </section>
 
 <section>
 	<h2 style="line-height: 1.2">Problem #2: setCustomValidity() is an odd API</h2>
-	<p><a href="demos/password.html">Example</a></p>
+	<p><a target="_blank" href="demos/password.html">Example 1</a> | <a target="_blank" href="demos/multiple-messages.html">Example 2</a></p>
 </section>
 
 <section>
@@ -171,6 +222,7 @@
 	<pre>
 <code contenteditable class="language-markup">&lt;form id="foo"&gt;
     &lt;input required&gt;
+    &lt;button&gt;Go&lt;/button&gt;
     &lt;script&gt;
         document.querySelector( "#foo" )
             .addEventListener( "submit", function() {
@@ -184,7 +236,7 @@
 
 <section>
 	<h3>Aggregating Messages</h3>
-	<p><a href="demos/message-aggregation.html">Demo</a></p>
+	<p><a target="_blank" href="demos/message-aggregation.html">Demo</a></p>
 </section>
 
 <section>
@@ -230,12 +282,37 @@
 </section>
 
 <section>
-	<p>Only use :invalid after interaction</p>
-	<a href="demos/interact.html">Demo</a>
+	<h3>Only use :invalid after interaction</h3>
+	<a target="_blank" href="demos/interact.html">Demo</a>
 </section>
 
 <section>
 	<h2 style="line-height: 1.2">Problem #5: There's no way to declaratively specify error messages</h2>
+</section>
+
+<section>
+	<h2>Customizing messages</h2>
+<pre class="language-markup constrained">
+<code contenteditable>&lt;form&gt;
+    &lt;input required type="email" id="baz"&gt;
+    &lt;button&gt;Go&lt;/button&gt;
+&lt;/form&gt;
+&lt;script&gt;
+    var baz = document.querySelector( "#baz" );
+    function setErrorMessage() {
+        if ( baz.validity.valueMissing ) {
+            baz.setCustomValidity( "Email is required" );
+        } else if ( baz.validity.typeMismatch ) {
+            baz.setCustomValidity( "Please provide a valid email address" );
+        } else {
+            baz.setCustomValidity( "" );
+        }
+    };
+    setErrorMessage();
+    baz.addEventListener( "change", setErrorMessage );
+&lt;/script&gt;</code>
+</pre>
+	<div class="output"></div>
 </section>
 
 <section>
@@ -256,36 +333,11 @@
 
 <section>
 	<h2>title attribute</h2>
-<pre class="language-markup constrained">
+<pre class="language-markup">
 <code contenteditable>&lt;form&gt;
-    &lt;input required title="HI!"&gt;
+    &lt;input pattern="[0-9]{5}" title="Enter 5 numbers"&gt;
     &lt;button&gt;Go&lt;/button&gt;
 &lt;/form&gt;</code>
-</pre>
-	<div class="output"></div>
-</section>
-
-<section>
-	<h2>Customizing messages</h2>
-<pre class="language-markup constrained">
-<code contenteditable>&lt;form&gt;
-    &lt;input required type="email" id="baz"&gt;
-    &lt;button&gt;Go&lt;/button&gt;
-&lt;/form&gt;
-&lt;script&gt;
-    var baz = document.querySelector( "#baz" );
-    function setErrorMessage() {
-        if ( baz.validity.valueMissing ) {
-            baz.setCustomValidity( "This is required" );
-        } else if ( baz.validity.typeMismatch ) {
-            baz.setCustomValidity( "Please provide a valid email address" );
-        } else {
-            baz.setCustomValidity( "" );
-        }
-    };
-    setErrorMessage();
-    baz.addEventListener( "change", setErrorMessage );
-&lt;/script&gt;</code>
 </pre>
 	<div class="output"></div>
 </section>
@@ -331,10 +383,10 @@
     &lt;button&gt;Go&lt;/button&gt;
 &lt;/form&gt;
 &lt;script&gt;
-document.getElementById( "field-x" )
-    .addEventListener( "invalid", function( event ) {
-        event.preventDefault();
-    });
+    document.getElementById( "field-x" )
+        .addEventListener( "invalid", function( event ) {
+            event.preventDefault();
+        });
 &lt;/script&gt;</code></pre>
 	<div class="output"></div>
 </section>
@@ -347,17 +399,17 @@ document.getElementById( "field-x" )
     &lt;button&gt;Go&lt;/button&gt;
 &lt;/form&gt;
 &lt;script&gt;
-document.getElementById( "form-x" )
-    .addEventListener( "invalid", function( event ) {
-        event.preventDefault();
-    }, true );
+    document.getElementById( "form-x" )
+        .addEventListener( "invalid", function( event ) {
+            event.preventDefault();
+        }, true );
 &lt;/script&gt;</code></pre>
 	<div class="output"></div>
 </section>
 
 <section>
 	<h3>Building your own bubbles</h3>
-	<a href="demos/bubbles.html">Demo</a>
+	<a target="_blank" href="demos/bubbles.html">Demo</a>
 </section>
 
 <section>
@@ -383,7 +435,7 @@ document.getElementById( "form-x" )
 
 <section>
 	<h2>Option #1: Server-side fallback only</h2>
-	<a href="demos/base-form.html">Demo</a>
+	<a target="_blank" href="demos/base-form.html">Demo</a>
 </section>
 
 <section>
@@ -392,7 +444,7 @@ document.getElementById( "form-x" )
 
 <section>
 	<h2>Webshims</h2>
-	<a href="demos/webshims.html">Demo</a>
+	<a target="_blank" href="demos/webshims.html">Demo</a>
 </section>
 
 <section>
@@ -410,7 +462,7 @@ document.getElementById( "form-x" )
 	<ul class="spaced">
 		<li>Written in 2006 by Jörn Zaefferer (whom still maintains it).</li>
 		<li><a href="http://jqueryvalidation.org/">http://jqueryvalidation.org/</a></li>
-		<li><a href="demos/jquery-validation.html">Demo</a></li>
+		<li><a target="_blank" href="demos/jquery-validation.html">Demo</a></li>
 	</ul>
 </section>
 
@@ -419,8 +471,17 @@ document.getElementById( "form-x" )
 	<ul class="spaced">
 		<li>Part of <a href="https://github.com/telerik/kendo-ui-core">Kendo UI Core</a>.</li>
 		<li><a href="http://demos.telerik.com/kendo-ui/validator/">http://demos.telerik.com/kendo-ui/validator/</a></li>
-		<li><a href="demos/kendo-ui-validator.html">Demo</a></li>
+		<li><a target="_blank" href="demos/kendo-ui-validator.html">Demo</a></li>
 	</ul>
+</section>
+
+<section>
+	<h2>Production usage: your options</h2>
+	<ol class="spaced">
+		<li>Server-side fallback only</li>
+		<li>Polyfill</li>
+		<li>Use a library based on HTML5</li>
+	</ol>
 </section>
 
 <section>
