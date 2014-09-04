@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Demo One</title>
 
+	<link rel="stylesheet" href="demos.css">
 	<style>
 		.error-messages {
 			display: none;
@@ -30,13 +31,17 @@
 <form>
 	<ul class="error-messages"></ul>
 
-	<label for="name">Name:</label>
-	<input id="name" name="name" required>
-
-	<label for="email">Email:</label>
-	<input id="email" name="email" type="email" required>
-
-	<button>Submit</button>
+	<div>
+		<label for="name">Name:</label>
+		<input id="name" name="name" required>
+	</div>
+	<div>
+		<label for="email">Email:</label>
+		<input id="email" name="email" type="email" required>
+	</div>
+	<div>
+		<button>Submit</button>
+	</div>
 </form>
 
 <script src="../bower_components/jquery/dist/jquery.js"></script>
@@ -44,7 +49,7 @@
 	(function() {
 		$( "form" ).on( "submit", function( event ) {
 			event.preventDefault();
-			$.post( "api-one.php", {
+			$.post( "api.php", {
 				name: this.name.value,
 				email: this.email.value
 			}).then( success, failure );

@@ -3,6 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<title>Only show :invalid after interaction</title>
+
+	<link rel="stylesheet" href="demos.css">
 	<style>
 		.interacted :invalid, .interacted:invalid {
 			background: red;
@@ -12,8 +14,12 @@
 <body>
 
 <form>
-	<input required>
-	<button>Go</button>
+	<div>
+		<input required>
+	</div>
+	<div>
+		<button>Go</button>
+	</div>
 </form>
 
 <script src="../bower_components/jquery/dist/jquery.js"></script>

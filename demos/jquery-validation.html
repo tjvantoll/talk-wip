@@ -5,30 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>jQuery validation Plugin</title>
 
+	<link rel="stylesheet" href="demos.css">
 	<style>
-		* { box-sizing: border-box; }
-		body {
-			font-size: 1.2em;
-		}
-		body input, body button {
-			font-size: 1.2em;
-		}
-
-		form > div {
-			margin: 1em;
-		}
-		form button {
-			width: 100%;
-		}
-		label { display: block; }
-		input {
-			width: 100%;
-			padding: 0.2em;
-		}
-		button {
-			padding: 0.2em;
-		}
-
 		input.error {
 			background: red;
 			color: white;
@@ -58,13 +36,13 @@
 <script src="../bower_components/jquery-validation/dist/jquery.validate.min.js"></script>
 <script>
 	$( "form" ).validate({
-		messages: {
+		/*messages: {
 			name: "Name is required.",
 			email: {
 				required: "Email is required.",
 				email: "You must provide a valid email address."
 			}
-		},
+		},*/
 		submitHandler: function() {
 			alert( "Successful submission" );
 		}

@@ -153,7 +153,7 @@
 
 <section>
 	<h2>Your server is your fallback</h2>
-	<p><a href="demos/form-one.html">Example</a></p>
+	<p><a href="demos/base-form.html">Example</a></p>
 </section>
 
 <section>
@@ -328,6 +328,22 @@
 <section>
 	<h2>Turning the bubbles off</h2>
 <pre class="language-markup">
+<code contenteditable>&lt;form&gt;
+    &lt;input required id="field-x"&gt;
+    &lt;button&gt;Go&lt;/button&gt;
+&lt;/form&gt;
+&lt;script&gt;
+document.getElementById( "field-x" )
+    .addEventListener( "invalid", function( event ) {
+        event.preventDefault();
+    });
+&lt;/script&gt;</code></pre>
+	<div class="output"></div>
+</section>
+
+<section>
+	<h2>Turning the bubbles off (for a whole form)</h2>
+<pre class="language-markup">
 <code contenteditable>&lt;form id="form-x"&gt;
     &lt;input required&gt;
     &lt;button&gt;Go&lt;/button&gt;
@@ -369,11 +385,16 @@ document.getElementById( "form-x" )
 
 <section>
 	<h2>Option #1: Server-side fallback only</h2>
-	<a href="demos/form-one.html">Demo</a>
+	<a href="demos/base-form.html">Demo</a>
 </section>
 
 <section>
 	<h2>Option #2: Polyfill</h2>
+</section>
+
+<section>
+	<h2>Webshims</h2>
+	<a href="demos/webshims.html">Demo</a>
 </section>
 
 <section>

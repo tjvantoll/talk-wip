@@ -20,36 +20,27 @@
 <script src="../bower_components/jquery/dist/jquery.js"></script>
 <script src="../bower_components/kendo-ui-core/js/kendo.ui.core.min.js"></script>
 <script>
-	// Suppress the default bubbles
-	document.querySelector( "form" )
-		.addEventListener( "invalid", function( event ) {
-			event.preventDefault();
-		}, true );
-
-	function setErrorMessage() {
-		var email = $( "#email" );
-
-		if ( email[ 0 ].validity.valueMissing ) {
-			email.attr( "title", "Email is required" );
-		} else if ( email[ 0 ].validity.typeMismatch ) {
-			field.attr( "title", "Please provide a valid email address" );
-		} else {
-			field.setCustomValidity( "" );
-		}
-	};
-
 	var email = $( "#email" )
-		.kendoTooltip()
+		.kendoTooltip({
+			content: function() {
+				return email[ 0 ].validationMessage;
+			}
+		})
 		.on( "blur", function() {
-			setErrorMessage();
 			email.kendoTooltip( "hide" );
+			email.kendoTooltip( "refresh" );
 		})
 		.on( "focus", function() {
 			email.kendoTooltip( "show" );
+		})
+		.on( "invalid", function( event ) {
+			// Suppress the default bubbles
+			event.preventDefault();
 		});
-	setErrorMessage();
+
 
 	// Manually detect form submission attempts
+	// to set focus appropriately.
 	$( "input[type=submit], button:not([type=button])" )
 		.on( "click", function() {
 			$( ":invalid" ).first().focus();
