@@ -43,41 +43,34 @@
 
 <script src="../bower_components/jquery/dist/jquery.js"></script>
 <script>
-	(function() {
-		function handleErrors() {
-			var form = $( this ),
-				errorList = $( ".error-messages", form );
+		var form = $( "form" );
 
-			var showAllErrorMessages = function() {
-				errorList.empty();
+		var showAllErrorMessages = function() {
+			var errorList = $( ".error-messages" ).empty();
 
-				// Find all invalid fields within the form.
-				var invalidFields = form.find( ":invalid" ).each( function( index, node ) {
+			// Find all invalid fields within the form.
+			var invalidFields = form.find( ":invalid" ).each( function( index, node ) {
 
-					// Find the field's corresponding label
-					var label = $( "label[for=" + node.id + "] ");
+				// Find the field's corresponding label
+				var label = $( "label[for=" + node.id + "] ");
 
-					errorList
-						.show()
-						.append( "<li><span>" + label.html() + "</span> " + node.validationMessage + "</li>" );
-				});
-			};
-
-			// Support: Safari, iOS Safari, old Android browser
-			form.on( "submit", function( event ) {
-				if ( this.checkValidity && !this.checkValidity() ) {
-					event.preventDefault();
-					$( this ).find( ":invalid" ).first().focus();
-				}
+				errorList
+					.show()
+					.append( "<li><span>" + label.html() + "</span> " + node.validationMessage + "</li>" );
 			});
-
-			// Manually detect form submission attempts
-			$( "input[type=submit], button:not([type=button])", form )
-				.on( "click", showAllErrorMessages );
 		};
 
-		$( "form" ).each( handleErrors );
-	}());
+		// Support: Safari, iOS Safari, old Android browser
+		form.on( "submit", function( event ) {
+			if ( this.checkValidity && !this.checkValidity() ) {
+				event.preventDefault();
+				$( this ).find( ":invalid" ).first().focus();
+			}
+		});
+
+		// Manually detect form submission attempts
+		$( "input[type=submit], button:not([type=button])", form )
+			.on( "click", showAllErrorMessages );
 </script>
 
 </body>
