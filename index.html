@@ -109,9 +109,9 @@
 	<ol class="spaced">
 		<li>Browser support is weird
 		<li>setCustomValidity() is an odd API</li>
+		<li>Customizing error messages is hard</li>
 		<li>Aggregating error messages is hard</li>
 		<li>The :invalid pseudo-class is tricky to use</li>
-		<li>Customizing error messages is hard</li>
 		<li>You cannot style the bubbles</li>
 	</ol>
 </section>
@@ -173,83 +173,7 @@
 </section>
 
 <section>
-	<h2 style="line-height: 1.2">Problem #3: Aggregating error messages is hard</h2>
-</section>
-
-<section>
-	<h3 style="line-height: 1.2;">There is no way to determine when the user attempted to submit a form.</h3>
-</section>
-
-<section>
-	<pre>
-<code contenteditable class="language-markup">&lt;form id="foo"&gt;
-    &lt;input required&gt;
-    &lt;button&gt;Go&lt;/button&gt;
-    &lt;script&gt;
-        document.querySelector( "#foo" )
-            .addEventListener( "submit", function() {
-                alert( "hi!" );
-            });
-    &lt;/script&gt;
-&lt;/form&gt;</code>
-	</pre>
-	<div class="output"></div>
-</section>
-
-<section>
-	<h3>Aggregating Messages</h3>
-	<p><a target="_blank" href="demos/message-aggregation.html">Demo</a></p>
-</section>
-
-<section>
-	<h3>Coming soon: invalid event on &lt;form&gt; elements!</h3>
-	<img src="images/form-invalid.png">
-</section>
-
-<section>
-	<h2 style="line-height: 1.2">Problem #4: The :invalid pseudo-class is tricky to use</h2>
-</section>
-
-<section>
-	<h2 class="no_casing">:invalid applies immediately!</h2>
-<pre class="language-markup">
-<code contenteditable>&lt;form&gt;
-    &lt;input type="text" id="foo" required&gt;
-&lt;/form&gt;
-&lt;style&gt;
-    #foo:invalid { background: red; }
-&lt;/style&gt;</code>
-</pre>
-	<div class="output"></div>
-</section>
-
-<section>
-	<h2>:moz-ui-invalid</h2>
-	<p>Only match after interaction or attempted submission (<a href="http://mounir.lamouri.fr/2011/05/improving-html5-forms-user-experience-with-moz-ui-invalid-and-moz-ui-valid-pseudo-classes.html">full algorithm</a>).</p>
-<pre class="language-markup constrained">
-<code contenteditable>&lt;form&gt;
-    &lt;input type="text" id="bar" required&gt;
-    &lt;button&gt;Go&lt;/button&gt;
-&lt;/form&gt;
-&lt;style&gt;
-    #bar:-moz-ui-invalid { background: red; }
-&lt;/style&gt;</code>
-</pre>
-	<div class="output"></div>
-</section>
-
-<section>
-	<h2>CSS Selectors Level 4 Spec</h2>
-	<img src="images/user-error.png">
-</section>
-
-<section>
-	<h3>Only use :invalid after interaction</h3>
-	<a target="_blank" href="demos/interact.html">Demo</a>
-</section>
-
-<section>
-	<h2 style="line-height: 1.2">Problem #5: Customizing error messages is hard</h2>
+	<h2 style="line-height: 1.2">Problem #3: Customizing error messages is hard</h2>
 </section>
 
 <section>
@@ -302,6 +226,82 @@
 &lt;/form&gt;</code>
 </pre>
 	<div class="output"></div>
+</section>
+
+<section>
+	<h2 style="line-height: 1.2">Problem #4: Aggregating error messages is hard</h2>
+</section>
+
+<section>
+	<h3 style="line-height: 1.2;">There is no way to determine when the user attempted to submit a form.</h3>
+</section>
+
+<section>
+	<pre>
+<code contenteditable class="language-markup">&lt;form id="foo"&gt;
+    &lt;input required&gt;
+    &lt;button&gt;Go&lt;/button&gt;
+    &lt;script&gt;
+        document.querySelector( "#foo" )
+            .addEventListener( "submit", function() {
+                alert( "hi!" );
+            });
+    &lt;/script&gt;
+&lt;/form&gt;</code>
+	</pre>
+	<div class="output"></div>
+</section>
+
+<section>
+	<h3>Aggregating Messages</h3>
+	<p><a target="_blank" href="demos/message-aggregation.html">Demo</a></p>
+</section>
+
+<section>
+	<h3>Coming soon: invalid event on &lt;form&gt; elements!</h3>
+	<img src="images/form-invalid.png">
+</section>
+
+<section>
+	<h2 style="line-height: 1.2">Problem #5: The :invalid pseudo-class is tricky to use</h2>
+</section>
+
+<section>
+	<h2 class="no_casing">:invalid applies immediately!</h2>
+<pre class="language-markup">
+<code contenteditable>&lt;form&gt;
+    &lt;input type="text" id="foo" required&gt;
+&lt;/form&gt;
+&lt;style&gt;
+    #foo:invalid { background: red; }
+&lt;/style&gt;</code>
+</pre>
+	<div class="output"></div>
+</section>
+
+<section>
+	<h2>:moz-ui-invalid</h2>
+	<p>Only match after interaction or attempted submission (<a href="http://mounir.lamouri.fr/2011/05/improving-html5-forms-user-experience-with-moz-ui-invalid-and-moz-ui-valid-pseudo-classes.html">full algorithm</a>).</p>
+<pre class="language-markup constrained">
+<code contenteditable>&lt;form&gt;
+    &lt;input type="text" id="bar" required&gt;
+    &lt;button&gt;Go&lt;/button&gt;
+&lt;/form&gt;
+&lt;style&gt;
+    #bar:-moz-ui-invalid { background: red; }
+&lt;/style&gt;</code>
+</pre>
+	<div class="output"></div>
+</section>
+
+<section>
+	<h2>CSS Selectors Level 4 Spec</h2>
+	<img src="images/user-error.png">
+</section>
+
+<section>
+	<h3>Only use :invalid after interaction</h3>
+	<a target="_blank" href="demos/interact.html">Demo</a>
 </section>
 
 <section>
@@ -379,9 +379,9 @@
 	<ol class="spaced">
 		<li>Browser support is weird
 		<li>setCustomValidity() is an odd API</li>
+		<li>Customizing error messages is hard</li>
 		<li>Aggregating error messages is hard</li>
 		<li>The :invalid pseudo-class is tricky to use</li>
-		<li>Customizing error messages is hard</li>
 		<li>You cannot style the bubbles</li>
 	</ol>
 </section>
@@ -449,7 +449,8 @@
 <section>
 	<h3>&lt;shameless-plug&gt;</h3>
 	<img src="images/book-cover.jpg"><br>
-	<a style="margin-top: -10px; margin-bottom: 0.5em; display: block;" href="http://manning.com/vantoll/">http://manning.com/vantoll</a>
+	<p>Use code jqchtwcf for 43% off</p>
+	<p><a style="margin-top: -10px; margin-bottom: 0.5em; display: block;" href="http://manning.com/vantoll/">http://manning.com/vantoll</a></p>
 	<h3>&lt;/shameless-plug&gt;</h3>
 </section>
 
@@ -457,14 +458,6 @@
 	<h1>Thanks</h1>
 	<h3><a href="http://tjvantoll.com">TJ VanToll</a> / <a href="http://twitter.com/tjvantoll">@tjvantoll</a></h3>
 </section>
-
-<!--
-	45 minutes
-
-	Twitter
-		Shake? https://twitter.com/signup
-	Chase
-		lol https://www.chase.com/
 
 </div><!-- .reveal --></div><!-- .slides -->
 
@@ -485,40 +478,40 @@
 
 		// Optional libraries used to extend on reveal.js
 		dependencies: [
-			{ src: 'bower_components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-			{ src: 'bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-			{ src: 'bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-			{ src: 'bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-			{ src: 'bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+			{ src: "bower_components/reveal.js/lib/js/classList.js", condition: function() { return !document.body.classList; } },
+			{ src: "bower_components/reveal.js/plugin/markdown/marked.js", condition: function() { return !!document.querySelector( "[data-markdown]" ); } },
+			{ src: "bower_components/reveal.js/plugin/markdown/markdown.js", condition: function() { return !!document.querySelector( "[data-markdown]" ); } },
+			{ src: "bower_components/reveal.js/plugin/zoom-js/zoom.js", async: true, condition: function() { return !!document.body.classList; } },
+			{ src: "bower_components/reveal.js/plugin/notes/notes.js", async: true, condition: function() { return !!document.body.classList; } }
 		]
 	});
 
 	var updateOutput = function() {
-		var $output = $(this).parents('section').find('.output');
+		var output = $( this ).parents( "section" ).find( ".output" );
 		try {
-			$output.html($(this).text());
+			output.html( $( this ).text() );
 		} catch(e) {}
 	};
 
-	$('code')
+	$( "code" )
 		.each(function() {
-			updateOutput.apply(this);
+			updateOutput.apply( this );
 		})
-		.on('keydown', function() {
+		.on( "keydown", function() {
 			var self = this;
 			setTimeout(function() {
-				updateOutput.apply(self);
+				updateOutput.apply( self );
 			}, 50);
 		})
-		.on('blur', Prism.highlightAll);
+		.on( "blur", Prism.highlightAll );
 
-	$(document)
-		.on('submit', 'form', function(event) {
+	$( document )
+		.on( "submit", "form", function( event ) {
 			event.preventDefault();
-			$(this)
-				.parents('.output')
-				.addClass('success')
-				.html('<h6>Successful Submission</h6>');
+			$( this )
+				.parents( ".output" )
+				.addClass( "success" )
+				.html( "<h6>Successful Submission</h6>" );
 		});
 </script>
 
