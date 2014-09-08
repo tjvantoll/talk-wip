@@ -62,7 +62,7 @@
 
 		// Support: Safari, iOS Safari, old Android browser
 		form.on( "submit", function( event ) {
-			if ( this.checkValidity && !this.checkValidity() ) {
+			if ( !this.checkValidity() ) {
 				event.preventDefault();
 				$( this ).find( ":invalid" ).first().focus();
 			}
